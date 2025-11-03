@@ -6,7 +6,7 @@ import { GoArrowDownRight } from "react-icons/go";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#1B1B1B] text-center px-6 pt-32">
-      <div className="absolute left-8 top-16 lg:top-24 md:block">
+      <div className="absolute left-8 top-16 lg:top-24 md:block hidden">
         <Image
           src="/images/erin-two.png"
           alt="Feyijimi Erinle"
