@@ -61,7 +61,7 @@ export const Navbar: React.FC = () => {
       }`} 
       >
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center z-50">
               <Image
@@ -227,7 +227,7 @@ export const Navbar: React.FC = () => {
       `}</style>
 
       {/* Spacer to prevent content from going under fixed navbar */}
-      <div className="h-20" />
+      <div className="h-14 sm:h-16 lg:h-20" />
     </>
   );
 };
