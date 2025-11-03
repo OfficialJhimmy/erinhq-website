@@ -17,12 +17,11 @@ export default function Hero() {
         />
       </div>
 
-      {/* Use the motion.h1 component after dynamic import */}
       <h1
         className="font-heading text-transparent bg-gradient-to-r from-white to-[#FF8906] 
         text-4xl sm:text-5xl md:text-6xl lg:text-[100px] 
         tracking-wide
-        font-normal text-center bg-clip-text "
+        font-normal text-center bg-clip-text mt-10 lg:mt-0"
       >
         I AM <br />
         FEYIJIMI <br />
@@ -74,6 +73,8 @@ export default function Hero() {
           creatives@theerin.com
         </p>
       </div>
+
+      
     </section>
   );
 }
