@@ -35,12 +35,12 @@ const articles = [
 
 export const WritingSection: React.FC = () => {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-gray-50 md:py-20 py-10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <div className=" flex items-center justify-center gap-2 mb-6">
             <Image
-              src="/images/line.png"
+              src="/images/Line.png"
               alt="Straight line"
               width={60}
               height={16}
@@ -51,7 +51,7 @@ export const WritingSection: React.FC = () => {
               Works
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
             Read my tutorials, documentation, and
             <br className="hidden md:block" /> insights.
           </h2>

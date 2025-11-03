@@ -44,7 +44,7 @@ export const DigitalFootprintSection: React.FC = () => {
       <div className="text-center mb-16">
         <div className=" flex items-center justify-center gap-2 mb-6">
           <Image
-            src="/images/line.png"
+            src="/images/Line.png"
             alt="Straight line"
             width={60}
             height={16}

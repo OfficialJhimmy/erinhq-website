@@ -12,7 +12,7 @@ export const AboutSection: React.FC = () => {
           <div>
             <div className=" flex items-center gap-2 mb-6">
               <Image
-                src="/images/line.png"
+                src="/images/Line.png"
                 alt="Straight line"
                 width={60}
                 height={16}
@@ -45,7 +45,7 @@ export const AboutSection: React.FC = () => {
 
           <div className="relative">
             <Image
-              src="/images/Logo.svg"
+              src="/images/bigerinhq.png"
               alt="ERIN The Brand Logo"
               width={450}
               height={600}
