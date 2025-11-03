@@ -56,16 +56,16 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <nav
-       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 ${
+       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-2 lg:py-4 ${
         isScrolled ? 'bg-[#1B1B1B]/95 backdrop-blur-md shadow-lg' : 'bg-[#1B1B1B]'
       }`} 
       >
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center z-50">
               <Image
-                src="/images/erin-logo.svg"
+                src="/images/erinhq.png"
                 alt="ERIN Logo"
                 width={60}
                 height={40}
@@ -141,7 +141,7 @@ export const Navbar: React.FC = () => {
         >
           <div className="flex flex-col h-full pt-24 pb-8 px-8">
             {/* Navigation Links */}
-            <nav className="flex flex-col gap-2 mb-auto">
+            <nav className="flex flex-col gap-2 mb-auto mt-16">
               {navigationLinks.map((link, index) => (
                 <Link
                   key={link.name}
@@ -227,7 +227,7 @@ export const Navbar: React.FC = () => {
       `}</style>
 
       {/* Spacer to prevent content from going under fixed navbar */}
-      <div className="h-20" />
+      <div className="h-14 sm:h-16 lg:h-20" />
     </>
   );
 };

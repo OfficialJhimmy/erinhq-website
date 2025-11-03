@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
             <div>
               <Link href="/" className="flex items-center">
                 <Image
-                  src="/images/logo-white.svg"
+                  src="/images/white-erin-logo.png"
                   alt="ERIN Logo"
                   width={80}
                   height={40}

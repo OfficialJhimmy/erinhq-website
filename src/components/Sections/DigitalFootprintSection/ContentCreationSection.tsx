@@ -90,7 +90,7 @@ export const ContentCreationSection: React.FC = () => {
                   href="mailto:erinthebrand@gmail.com"
                   className="text-[#4D4D4D] font-medium hover:text-[#E8B67E] transition-colors"
                 >
-                  creatives@theerin.com
+                  creatives@erinhq.com
                 </a>
               </div>
             </div>

@@ -25,7 +25,7 @@ const projects = [
   },
   {
     title: "Additional Project",
-    description: "Another amazing project showcasing technical expertise.",
+    description: "Another amazing project showcasing technical expertise. This is another side project??",
     link: "#",
     image: "/images/songdis.png",
   },
@@ -33,12 +33,12 @@ const projects = [
 
 export const ProjectsSection: React.FC = () => {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <section className="max-w-7xl mx-auto px-6 md:py-20 py-10">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
         <div>
           <div className=" flex items-center gap-2 mb-6">
             <Image
-              src="/images/line.png"
+              src="/images/Line.png"
               alt="Straight line"
               width={60}
               height={16}
