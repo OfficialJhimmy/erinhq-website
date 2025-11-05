@@ -1,69 +1,122 @@
-// // components/CompanyCarousel.tsx
 "use client";
-
-
-import React from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, A11y } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/a11y";
+import React, { useEffect, useRef, useState } from "react";
 
-type Company = {
+interface Company {
   name: string;
   logo: string;
-};
-
-interface CompanyCarouselProps {
-  companies: Company[];
+  link?: string;
+  size?: number // CTA support
 }
 
-export const CompanyCarousel: React.FC<CompanyCarouselProps> = ({
-  companies,
-}) => {
-  const slides = [...companies, ...companies];
+interface Props {
+  companies: Company[];
+  speed?: number; // lower = faster movement
+}
+
+const CompanyCarousel: React.FC<Props> = ({ companies, speed = 40 }) => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Touch swipe support
+  const touchStartX = useRef<number>(0);
+  const touchMoveX = useRef<number>(0);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const width = track.scrollWidth / 2;
+    let pos = 0;
+
+    const animate = () => {
+      if (!isPaused) {
+        pos -= 0.5;
+        if (Math.abs(pos) >= width) pos = 0;
+        track.style.transform = `translateX(${pos}px)`;
+      }
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+  }, [isPaused]);
+
+  // Swipe functionality
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchMoveX.current = e.touches[0].clientX;
+    const diff = touchMoveX.current - touchStartX.current;
+    const track = trackRef.current;
+    if (track) {
+      track.style.transform = `translateX(${diff}px)`;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    touchStartX.current = 0;
+    touchMoveX.current = 0;
+  };
+
+  // Keyboard navigation (accessibility)
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!trackRef.current) return;
+    const track = trackRef.current;
+    const current = new DOMMatrix(track.style.transform).m41;
+
+    if (e.key === "ArrowRight") {
+      track.style.transform = `translateX(${current - 20}px)`;
+    }
+    if (e.key === "ArrowLeft") {
+      track.style.transform = `translateX(${current + 20}px)`;
+    }
+  };
 
   return (
-    <div aria-label="Companies I've worked with" className="">
-      <Swiper
-        modules={[Autoplay, A11y]}
-        loop={true}
-        slidesPerView={2}
-        spaceBetween={24}
-        autoplay={{
-          delay: 1,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: false,
-        }}
-        speed={4000}
-        a11y={{ enabled: true }}
-        breakpoints={{
-          640: { slidesPerView: 3, spaceBetween: 24 },
-          768: { slidesPerView: 4, spaceBetween: 28 },
-          1024: { slidesPerView: 5, spaceBetween: 32 },
-          1280: { slidesPerView: 6, spaceBetween: 36 },
-        }}
-        className=""
+    <div
+      className="overflow-hidden w-full relative outline-none"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div
+        ref={trackRef}
+        className="flex gap-16 whitespace-nowrap transition-transform duration-75 opacity-0 animate-fadeIn"
       >
-        {slides.map((company, index) => (
-          <SwiperSlide
-            key={`${company.name}-${index}`}
-            className="flex items-center justify-center"
-          >
-            <div className="flex items-center justify-center px-4 py-6">
-              <Image
-                src={company.logo}
-                alt={company.name}
-                width={160}
-                height={48}
-                loading="lazy"
-                className="max-h-12 object-contain"
-              />
+        {[...companies, ...companies].map((company, index) => {
+          const LogoElement = (
+            <Image
+            src={company.logo}
+            alt={`${company.name} logo`}
+            width={company.size ?? 120}
+            height={(company.size ?? 120) / 2}
+            className="object-contain pointer-events-none"
+            loading="lazy"
+          />
+          );
+
+          return (
+            <div
+              key={index}
+              className="flex items-center justify-center shrink-0 transition-transform hover:scale-105"
+            >
+              {company.link ? (
+                <a href={company.link} target="_blank" rel="noopener noreferrer">
+                  {LogoElement}
+                </a>
+              ) : (
+                LogoElement
+              )}
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+          );
+        })}
+      </div>
     </div>
   );
 };

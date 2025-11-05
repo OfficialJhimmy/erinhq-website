@@ -4,24 +4,28 @@ import Image from "next/image";
 import React from "react";
 
 const CompanyCarousel = dynamic(
-  () => import("../../Carousels/CompanyCarousel").then((m) => m.CompanyCarousel),
-  {
-    ssr: false,
-    loading: () => <div className="py-8 text-center">Loading companies…</div>,
-  }
+  () => import("../../Carousels/CompanyCarousel"),
+  { ssr: false }
 );
 
+
 const companies = [
-  { name: "Reform", logo: "/images/reform.svg" },
-  { name: "YUPLE", logo: "/images/tuple.svg" },
-  { name: "SavvyCal", logo: "/images/savvycal.svg" },
-  { name: "Statamic", logo: "/images/statamic.svg" },
-  { name: "Transitor", logo: "/images/transform.svg" },
+  { name: "Datamellon", logo: "/images/new-datamellon.png", size: 200 },
+  { name: "WriteTech Hub", logo: "/images/writetechhub-logo.png", size: 200 },
+  { name: "LSDPC", logo: "/images/lsdpc.svg" },
+  { name: "GTCO", logo: "/images/gtco_logo.png" },
+  { name: "Sterling", logo: "/images/sterling.png", size: 200},
+  { name: "Premium Trust", logo: "/images/premium-trust.png", size: 250 },
+  { name: "Elegance Media", logo: "/images/elegance.png" },
+  { name: "FIRS", logo: "/images/firs-logo-new.png" },
+  { name: "Lagos State Judiciary", logo: "/images/judiciary.png" },
+  { name: "Kluadworks", logo: "/images/klaudworks.png", size: 200 },
+  { name: "Befit", logo: "/images/newbefit.png", size: 200 },
 ];
 
 export const Contributions: React.FC = () => {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <section className="max-w-7xl mx-auto px-6 py-8 lg:py-20">
       <div className="text-center flex flex-col items-center justify-center">
         <div className=" flex items-center justify-center gap-2 mb-6">
           <Image
@@ -37,7 +41,7 @@ export const Contributions: React.FC = () => {
           </span>
         </div>
 
-        <h1 className="text-4xl md:text-[38px] lg:text-[40px] font-normal font-body text-[#1B1B1B] mb-6 leading-tight">
+        <h1 className="text-4xl md:text-[38px] lg:text-[40px] font-normal font-body text-[#1B1B1B] mb-1 leading-tight">
           Projects I've Contributed To
         </h1>
         <p
@@ -51,9 +55,7 @@ export const Contributions: React.FC = () => {
         </p>
 
         {/* Company Logos Carousel — client-only, lazy loaded */}
-        {/* <div className="mb-8">
-          <CompanyCarousel companies={companies} />
-        </div> */}
+        <CompanyCarousel companies={companies} speed={40} />
       </div>
     </section>
   );

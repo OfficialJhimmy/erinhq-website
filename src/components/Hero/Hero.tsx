@@ -20,7 +20,7 @@ export default function Hero() {
       {/* Use the motion.h1 component after dynamic import */}
       <h1
         className="font-heading text-transparent bg-gradient-to-r from-white to-[#FF8906] 
-        text-4xl sm:text-5xl md:text-6xl lg:text-[100px] 
+        text-6xl sm:text-5xl md:text-6xl lg:text-[100px] 
         tracking-wide
         font-normal text-center bg-clip-text "
       >
@@ -39,7 +39,7 @@ export default function Hero() {
       </p>
 
       <p
-        className="mt-7 text-[#E2E2E2] font-euclid max-w-3xl text-sm md:text-[18px] leading-[30px]"
+        className="mt-7 text-[#E2E2E2] font-euclid max-w-3xl text-base md:text-[18px] leading-[30px]"
         style={{ marginTop: "16px" }}
       >
         Whatever the title, I help teams and creators build software that works,
@@ -70,8 +70,8 @@ export default function Hero() {
           Get In Touch With ERIN
         </p>
 
-        <p className="font-body font-normal text-[18px] underline text-[#4D4D4D]">
-          creatives@theerin.com
+        <p className="font-body font-normal text-[18px] text-white">
+          creatives@erinhq.com
         </p>
       </div>
     </section>

@@ -93,12 +93,12 @@ export const DigitalFootPrintTestimonialsSection: React.FC = () => {
   }, [isPaused]);
 
   return (
-    <section className="py-20 overflow-hidden">
+    <section className=" py-4 lg:py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-6">
             <Image
-              src="/images/line.png"
+              src="/images/Line.png"
               alt="Straight line"
               width={60}
               height={16}

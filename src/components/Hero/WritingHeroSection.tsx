@@ -9,7 +9,7 @@ export const WritingHeroSection: React.FC = () => {
         {/* Section Label */}
         <div className="flex items-center justify-center gap-3 mb-8">
           <Image
-            src="/images/line.png"
+            src="/images/Line.png"
             alt="Decorative line"
             width={60}
             height={16}

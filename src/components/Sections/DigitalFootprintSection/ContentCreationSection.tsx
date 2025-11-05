@@ -32,7 +32,7 @@ export const ContentCreationSection: React.FC = () => {
     <section className="bg-white py-20 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="border-gray-300 rounded-lg p-8 mb-8">
+        <div className="border-gray-300 rounded-lg lg:p-8 p-2 mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-px bg-gray-300" />
             <span className="text-[#A3A3A3] font-heading text-sm uppercase tracking-wider">
@@ -48,7 +48,7 @@ export const ContentCreationSection: React.FC = () => {
         </div>
 
         {/* Video Grid */}
-        <div className="border-gray-300 rounded-lg p-8 mb-8">
+        <div className="border-gray-300 rounded-lg lg:p-8 p-2 mb-8">
           <div className="grid md:grid-cols-3 gap-6">
             {videoContents.map((video, index) => (
               <a
@@ -77,7 +77,7 @@ export const ContentCreationSection: React.FC = () => {
         </div>
 
         {/* Footer CTA */}
-        <div className="border-gray-300 rounded-lg p-8">
+        <div className="border-gray-300 rounded-lg lg:p-8 p-2">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             {/* Contact Info */}
             <div className="flex items-center gap-3">

@@ -57,7 +57,7 @@ export const HowIWorkSection: React.FC = () => {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Image
-              src="/images/line.png"
+              src="/images/Line.png"
               alt="Decorative line"
               width={60}
               height={16}

@@ -39,13 +39,13 @@ const processSteps: ProcessStep[] = [
 
 export const DigitalFootprintHowIWorkSection: React.FC = () => {
   return (
-    <section className="bg-white py-20 px-6">
+    <section className="bg-white py-8 lg:py-20 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Image
-              src="/images/line.png"
+              src="/images/Line.png"
               alt="Decorative line"
               width={60}
               height={16}
