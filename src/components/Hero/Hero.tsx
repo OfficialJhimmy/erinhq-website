@@ -5,7 +5,7 @@ import { GoArrowDownRight } from "react-icons/go";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#1B1B1B] text-center px-6 pt-32">
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#1B1B1B] text-center px-6 pt-24 md:pt-28 lg:pt-32">
       <div className="absolute left-8 top-16 lg:top-24 md:block hidden">
         <Image
           src="/images/erin-two.png"
@@ -65,12 +65,11 @@ export default function Hero() {
           loading="lazy"
         />
       </div>
-      <div className="absolute bottom-8 left-8 flex flex-col space-y-2 text-[#E2E2E2]">
-        <p className="font-body font-medium text-[20px]">
+      <div className="mt-12 flex flex-col space-y-1 text-[#E2E2E2] md:absolute md:bottom-8 md:left-8 text-center md:text-left">
+        <p className="font-body font-medium text-[18px] sm:text-[20px]">
           Get In Touch With ERIN
         </p>
-
-        <p className="font-body font-normal text-[18px] text-white">
+        <p className="font-body font-normal text-[16px] sm:text-[18px] text-white">
           creatives@erinhq.com
         </p>
       </div>

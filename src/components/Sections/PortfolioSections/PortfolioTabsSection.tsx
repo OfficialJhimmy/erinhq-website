@@ -6,9 +6,10 @@ import { getProjectsByCategory, ProjectCategory } from '@/data/portfolioData';
 import { ProjectCardPortfolio } from '@/components/Cards/ProjectCardPortfolio';
 
 const tabs = [
-  { id: 'all', label: 'Personal projects' },
-  { id: 'frontend', label: 'Company Website' },
-  { id: 'fullstack', label: 'Software Tools' },
+  { id: 'portfolio', label: 'Personal Portfolios' },
+  { id: 'company', label: 'Company Website' },
+  { id: 'software tools', label: 'Software Tools' },
+  { id: 'ai', label: 'AI Tools' },
 ];
 
 export const PortfolioTabsSection: React.FC = () => {
@@ -42,7 +43,7 @@ export const PortfolioTabsSection: React.FC = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.slice(0, 9).map((project) => (
+          {projects.slice(0, 15).map((project) => (
             <ProjectCardPortfolio
               key={project.id}
               id={project.id}

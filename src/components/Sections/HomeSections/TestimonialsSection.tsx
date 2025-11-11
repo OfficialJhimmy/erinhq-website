@@ -15,40 +15,54 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: 'Dazzle Healer',
-    role: 'Front End Developer',
+    name: 'Zainab Daoudu',
+    role: 'Founder, WriteTech Hub',
     avatar: '/images/Avatar.svg',
     rating: 5,
     testimonial: "The attention to detail and usability are truly amazing for all designers. I highly recommend it for any type of project."
   },
   {
-    name: 'Dazzle Healer',
-    role: 'Front End Developer',
+    name: 'Omotola E. Omotayo',
+    role: 'Founder, Elegance Media',
     avatar: '/images/Avatar.svg',
     rating: 5,
-    testimonial: "I've used other kits, but this one is the best. The attention to detail and usability are truly amazing for all designers. I highly recommend it for any type of project."
+    testimonial: "The attention to detail and usability are truly amazing for all designers. I highly recommend it for any type of project."
   },
   {
-    name: 'Dazzle Healer',
-    role: 'Front End Developer',
-    avatar: '/images/Avatar.svg',
+    name: 'Tolulope Olawumi',
+    role: 'Project Manager, Marketing & Communication Strategist',
+    avatar: '/images/tolu.jpeg',
     rating: 5,
-    testimonial: "I've used other kits, but this one is the best. The attention to detail and usability are truly amazing for all designers. I highly recommend it for any type of project."
+    testimonial: "I had the pleasure of working with Feyijimi at WriteTech Hub where I was the Marketing Manager and he was our Technical Writer. Jimi stood out for his ability to take complex technical ideas and turn them into content that was clear, engaging, and easy to understand. His work made it much easier for our team to communicate with both technical and non-technical audiences. He was always open to feedback, quick to contribute ideas, and worked seamlessly across teams. His professionalism and consistency made him a reliable partner on every project we worked on together. Anyone looking for a skilled Technical Writer who can blend technical expertise with creativity will be lucky to have Feyijimi on their team."
   },
   {
-    name: 'Sarah Johnson',
-    role: 'Product Manager',
-    avatar: '/images/Avatar.svg',
+    name: 'Femi Akinyemi',
+    role: 'Senior Software Engineer',
+    avatar: '/images/femi.jpeg',
     rating: 5,
-    testimonial: "Working with Erin was a game-changer for our team. The technical expertise combined with clear communication made the entire process seamless."
+    testimonial: "I’ve had the pleasure of working with ERIN for the past three years as a frontend engineer. He consistently delivers high-quality, scalable solutions, communicates effectively, and is a reliable team player. I highly recommend him for any Software Engineering role."
   },
   {
-    name: 'Michael Chen',
-    role: 'CEO, TechStart',
-    avatar: '/images/Avatar.svg',
+    name: 'Abdulrasaq Jamiu Adewuyi',
+    role: 'Senior Software Engineer',
+    avatar: '/images/jamiu.jpeg',
     rating: 5,
-    testimonial: "Exceptional work! The documentation was clear, the code was clean, and the project was delivered ahead of schedule. Highly recommended!"
-  }
+    testimonial: "I currently work alongside Feyijimi at Datamellon, and he’s easily one of the most talented and reliable software engineers I’ve worked with. His expertise in working with several frontend, and backend frameworks and technologies, improving product performance, or creating clean, well-designed user experiences. What makes Feyijimi stand out is not just his technical skills but also his eye for great design, attention to detail, and passion for writing clean, efficient code. He’s also a great teammate, collaborative, supportive, and always willing to jump in to solve tough challenges."
+  },
+  {
+    name: 'John Alokan',
+    role: 'Senior Full Stack Software Engineer',
+    avatar: '/images/john.jpeg',
+    rating: 5,
+    testimonial: "Working with Feyijimi at Datamellon has been an outstanding experience. His frontend engineering expertise is truly impressive, and collaborating with him as a backend engineer has been seamless. Our integration process was smooth, with minimal friction, thanks to his clear communication and technical precision. Feyijimi’s attention to detail consistently stands out"
+  },
+  {
+    name: 'Toyibat Adele',
+    role: 'Technical Writer',
+    avatar: '/images/toyibat.jpeg',
+    rating: 5,
+    testimonial: "I’ve had the privilege of working directly with Feyijimi at WriteTech Hub, and he has been such a great colleague to learn from. He’s proactive, always on top of his tasks, and consistently shows up for the team whenever there’s a need. Feyijimi has a unique mix of creativity and strong work ethic that makes collaborating with him both easy and inspiring. He’s also a great team player, never hesitating to share ideas or chip in during meetings. Working with him has truly been a rewarding experience, and I admire the energy and commitment he brings to everything he does."
+  },
 ];
 
 export const TestimonialsSection: React.FC = () => {

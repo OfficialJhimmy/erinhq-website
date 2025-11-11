@@ -31,7 +31,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
       </div>
 
       {/* Testimonial Text */}
-      <p className="text-gray-700 leading-relaxed mb-6 flex-grow">
+      <p className="text-gray-700 leading-relaxed mb-6 flex-grow line-clamp-6">
         {testimonial}
       </p>
 

@@ -7,27 +7,27 @@ import Image from "next/image";
 const projects = [
   {
     title: "Datamellon",
-    description: "A tech company site focused on AI and data-driven solutions.",
-    link: "#",
-    image: "/images/datamellon-banner.png",
+    description:"Datamellon is a Cloud-native software development and AI consulting company with operations in the UK, Nigeria, Ghana, Kenya, USA, Canada, Uganda, South Africa, Dubai and Saudi Arabia.",
+    link: "https://datamellon.com",
+    image: "/images/datamellon-cover.png",
   },
   {
     title: "WriteTech Hub",
-    description: "The hub for technical writing and documentation projects.",
-    link: "#",
+    description:'WriteTech Hub is a platform dedicated to clear, precise technical communication, enabling growth and innovation through technical content.',
+    link: "https://writetechhub.org",
     image: "/images/writetechhub-banner.png",
   },
   {
-    title: "SongDis",
-    description: "The hub for technical writing.",
-    link: "#",
-    image: "/images/songdis.png",
+    title: "KlaudWorks",
+    description:'A cloud financial management platform that enables users to monitor, analyze, and optimize cloud costs with AI-driven insights.',
+    link: "https://www.klaudworks.io/",
+    image: "/images/klaudworks-cover.png",
   },
   {
-    title: "Additional Project",
-    description: "Another amazing project showcasing technical expertise. This is another side project??",
+    title: "Shestel",
+    description:'A global platform connecting users through digital content including movies, TV shows, and sports, with AI-powered engagement features.',
     link: "#",
-    image: "/images/songdis.png",
+    image: "/images/shestel-new.png",
   },
 ];
 

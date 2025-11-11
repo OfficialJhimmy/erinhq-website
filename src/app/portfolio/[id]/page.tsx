@@ -1,12 +1,16 @@
 // app/portfolio/[id]/page.tsx
-import React from 'react';
-import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Github, ArrowRight } from 'lucide-react';
-import { getProjectById, getRelatedProjects, projects } from '@/data/portfolioData';
-import { ProjectCardPortfolio } from '@/components/Cards/ProjectCardPortfolio';
-import { Footer } from '@/components/Footer/Footer';
+import React from "react";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, ExternalLink, Github, ArrowRight } from "lucide-react";
+import {
+  getProjectById,
+  getRelatedProjects,
+  projects,
+} from "@/data/portfolioData";
+import { ProjectCardPortfolio } from "@/components/Cards/ProjectCardPortfolio";
+import { Footer } from "@/components/Footer/Footer";
 
 // Generate static paths for all projects
 export async function generateStaticParams() {
@@ -15,7 +19,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProjectDetailPage({ params }: { params: { id: string } }) {
+export default function ProjectDetailPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const project = getProjectById(params.id);
 
   if (!project) {
@@ -34,7 +42,10 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
             href="/portfolio"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-8 transition-colors group"
           >
-            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft
+              size={20}
+              className="group-hover:-translate-x-1 transition-transform"
+            />
             Back to Portfolio
           </Link>
 
@@ -109,7 +120,9 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
           <div className="lg:col-span-2 space-y-12">
             {/* Overview */}
             <div>
-              <h2 className="font-heading text-3xl font-normal text-[#1B1B1B] mb-4">Overview</h2>
+              <h2 className="font-heading text-3xl font-normal text-[#1B1B1B] mb-4">
+                Overview
+              </h2>
               <p className="text-[#525252] text-lg leading-relaxed">
                 {project.fullDescription}
               </p>
@@ -118,7 +131,9 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
             {/* Challenges */}
             {project.challenges && (
               <div>
-                <h2 className="font-heading text-3xl font-normal text-[#1B1B1B] mb-4">Challenges</h2>
+                <h2 className="font-heading text-3xl font-normal text-[#1B1B1B] mb-4">
+                  Challenges
+                </h2>
                 <p className="text-[#525252] text-lg leading-relaxed">
                   {project.challenges}
                 </p>
@@ -128,17 +143,23 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
             {/* Solutions */}
             {project.solutions && (
               <div>
-                <h2 className="font-heading text-3xl font-normal text-[#1B1B1B] mb-4">Solutions</h2>
-                <p className="text-[#525252] text-lg leading-relaxed">
-                  {project.solutions}
-                </p>
+                <h2 className="font-heading text-3xl font-normal text-[#1B1B1B] mb-4">
+                  Solutions
+                </h2>
+                <ul className="list-disc pl-6 text-[#525252] text-lg leading-relaxed space-y-2">
+                  {project.solutions.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
               </div>
             )}
 
             {/* Results */}
             {project.results && (
               <div>
-                <h2 className="font-heading text-3xl font-normal text-[#1B1B1B] mb-4">Results</h2>
+                <h2 className="font-heading text-3xl font-normal text-[#1B1B1B] mb-4">
+                  Results
+                </h2>
                 <p className="text-[#525252] text-lg leading-relaxed">
                   {project.results}
                 </p>
@@ -148,15 +169,22 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
             {/* Image Gallery */}
             {project.images.length > 0 && (
               <div>
-                <h2 className="font-heading text-3xl font-bold text-[#1B1B1B] mb-6">Gallery</h2>
+                <h2 className="font-heading text-3xl font-bold text-[#1B1B1B] mb-6">
+                  Gallery
+                </h2>
                 <div className="grid md:grid-cols-2 gap-6">
                   {project.images.map((img, index) => (
-                    <div key={index} className="aspect-video relative rounded-lg overflow-hidden">
+                    <div
+                      key={index}
+                      className="relative w-full  rounded-lg overflow-hidden"
+                    >
                       <Image
                         src={img}
                         alt={`${project.title} screenshot ${index + 1}`}
-                        fill
+                        width={1200}
+                        height={800}
                         className="object-cover"
+                        sizes="100%"
                       />
                     </div>
                   ))}
@@ -171,8 +199,12 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                   "{project.testimonial.text}"
                 </p>
                 <div>
-                  <p className="font-semibold text-[#1B1B1B]">{project.testimonial.author}</p>
-                  <p className="text-[#A3A3A3]">{project.testimonial.position}</p>
+                  <p className="font-semibold text-[#1B1B1B]">
+                    {project.testimonial.author}
+                  </p>
+                  <p className="text-[#A3A3A3]">
+                    {project.testimonial.position}
+                  </p>
                 </div>
               </div>
             )}
@@ -183,7 +215,9 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
             <div className="sticky top-24 space-y-8">
               {/* Technologies */}
               <div>
-                <h3 className="text-xl font-bold text-[#1B1B1B] mb-4">Technologies</h3>
+                <h3 className="text-xl font-bold text-[#1B1B1B] mb-4">
+                  Technologies
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, index) => (
                     <span
@@ -198,7 +232,9 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
 
               {/* Categories */}
               <div>
-                <h3 className="text-xl font-bold text-[#1B1B1B] mb-4">Categories</h3>
+                <h3 className="text-xl font-bold text-[#1B1B1B] mb-4">
+                  Categories
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.category.map((cat, index) => (
                     <span
@@ -213,7 +249,9 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
 
               {/* Project Links */}
               <div>
-                <h3 className="text-xl font-bold text-[#1B1B1B] mb-4">Project Links</h3>
+                <h3 className="text-xl font-bold text-[#1B1B1B] mb-4">
+                  Project Links
+                </h3>
                 <div className="space-y-3">
                   {project.liveUrl && (
                     <a
