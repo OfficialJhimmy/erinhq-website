@@ -48,7 +48,7 @@ export default function Hero() {
       </p>
 
       <Link
-        href="/project"
+        href="/portfolio"
         className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-400 to-yellow-400 text-[#1B1B1B] font-body font-medium rounded-full transition-transform hover:scale-105"
         style={{ marginTop: "18px", padding: "16px" }}
       >
