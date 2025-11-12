@@ -461,11 +461,11 @@ export const projects: Project[] = [
     fullDescription:
       'Melly Guard is an AI-driven fraud monitoring and detection tool used by several banks in Nigeria. It provides real-time detection across multiple channels, monitors transactions for AML/CTF risks, offers explainable AI outputs for regulatory acceptance, and automates compliance workflows to reduce operational costs. I worked across the full stack, building the Next.js frontend, Node.js and Python backend services, containerizing everything with Docker, and managing deployments with Kubernetes on AWS. This project required high performance, reliability, and seamless integration with critical banking systems.',
     category: ['software tools', 'ai', 'frontend', 'backend', 'fullstack'],
-    image: '/images/main-dashboard.png',
+    image: '/images/fraud-detection.png',
     images: [
-      '/images/reasoning.png',
-      '/images/ctf.png',
-      '/images/fraud.png'
+      '/images/fraud-one.png',
+      '/images/fraud-two.png',
+      '/images/fraud-three.png'
     ],
     technologies: ['Next.js', 'React.js', 'Node.js', 'Python', 'Docker', 'Kubernetes', 'AWS', 'AI Integration', 'XAI'],
     year: '2025',
@@ -499,11 +499,12 @@ export const projects: Project[] = [
     fullDescription:
       'The LSDPC Payment Portal is a comprehensive platform designed for Lagos State Development and Property Corporation, a state government entity that manages property sales, rentals, and development. The portal allows users to buy properties, pay rents, service charges, legal fees, perform change of ownership, land regularization, and submit complaints. It serves four distinct user personas: general users, MD, Marketing Admin, PLM Admin, and Finance Admin. I built the frontend using React and TypeScript, focusing on creating a responsive, accessible, and intuitive interface that simplifies complex property transactions for users while providing robust admin controls for internal teams.',
     category: ['software tools', 'frontend', 'fullstack'],
-    image: '/images/lsdpc-thumb.png',
+    image: '/images/lsdpc-cover.png',
     images: [
-      '/images/lsdpc-1.png',
-      '/images/lsdpc-2.png',
-      '/images/lsdpc-3.png'
+      '/images/lsdpc-one.png',
+      '/images/lsdpc-two.png',
+      '/images/lsdpc-three.png',
+      '/images/lsdpc-four.png'
     ],
     technologies: ['React.js', 'TypeScript', 'REST APIs', 'Responsive Design', 'Accessibility', 'Secure Authentication'],
     year: '2025',
@@ -537,10 +538,11 @@ export const projects: Project[] = [
     fullDescription:
       'The AI Contract Generator is an MVP web application I built to allow users to create professional contracts efficiently. Users describe their business context in plain language, and the system delivers a complete, formatted contract in HTML, including section numbering, styling, and consistent terminology. I focused on architecting real-time systems that stream AI-generated content efficiently, handling token limits, API failures, and latency while maintaining a smooth, responsive user experience.',
     category: ['software tools', 'ai','frontend', 'backend', 'fullstack'],
-    image: '/images/portfolio/ai-contract-thumb.jpg',
+    image: '/images/ai-contract-read-cover.png',
     images: [
-      '/images/portfolio/ai-contract-1.jpg',
-      '/images/portfolio/ai-contract-2.jpg'
+      '/images/ai-read-one.png',
+      '/images/ai-read-two.png',
+      '/images/ai-read-three.png'
     ],
     technologies: ['Next.js', 'React.js', 'TypeScript', 'AWS Lambda', 'Serverless Architecture', 'OpenAI API', 'Real-Time Streaming', 'HTML Formatting'],
     year: '2025',

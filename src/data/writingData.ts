@@ -109,7 +109,7 @@ export const articles: Article[] = [
     description: 'A comprehensive guide on how to build a GraphQL API with Node.js, Apollo-Server, and MongoDB Atlas.',
     image: '/images/node.png',
     readTime: '16 min read',
-    link: 'https://the-erin.hashnode.dev/understanding-high-availability-fault-tolerance-and-disaster-recovery-in-aws-an-overview',
+    link: 'https://the-erin.hashnode.dev/how-to-build-a-graphql-api-with-nodejs-apollo-server-and-mongodb-atlas',
     linkText: 'Read more',
     category: ['blogs', 'tutorials'],
     tags: ['JavaScript', 'React.js', 'QR-Code'],

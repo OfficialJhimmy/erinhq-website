@@ -123,7 +123,7 @@ export const TestimonialsSection: React.FC = () => {
               Testimonials
             </span>
           </div>
-          <h2 className="text-[32px] md:text-[40px] font-medium text-[#1B1B1B]">
+          <h2 className="text-[32px] md:text-[40px] font-normal text-[#1B1B1B] leading-tight">
             What people I've Worked With Say About Me
           </h2>
         </div>

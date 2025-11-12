@@ -2,34 +2,38 @@ import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import Image from "next/image";
 import { ArticleCard } from "@/components/Cards/ArticleCard";
+import Link from "next/link";
 
 const articles = [
   {
     category: "Blog" as const,
-    readTime: "5 min read",
-    title: "Making AI Tools More Human-Friendly",
+    readTime: "10 min read",
+    title:
+      "What Is Agentic AI and Why It Matters for the Future of Productivity",
     description:
-      "A reflection on building AI that's not just powerful, but also relaxed and fun",
-    link: "#",
-    bgColor: "bg-orange-50",
+      "What Is Agentic AI and Why It Matters for the Future of Productivity",
+    link: "https://the-erin.hashnode.dev/what-is-agentic-ai-and-why-it-matters-for-the-future-of-productivity",
+    image: "/images/agentic-ai.png",
   },
   {
-    category: "Case Studies" as const,
+    category: "Blog" as const,
     readTime: "5 min read",
-    title: "Scaling a B2B SaaS Platform for 500+ Users",
+    title: "A Comprehensive Guide to Writing Your First GraphQL Query",
     description:
-      "Documented how I optimized backend performance and improved adoption rates",
-    link: "#",
-    bgColor: "bg-gray-800",
+      "A comprehensive guide on how to write your first GraphQL Query",
+
+    link: "https://the-erin.hashnode.dev/a-comprehensive-guide-to-writing-your-first-graphql-query",
+    image: "/images/graphql.png",
   },
   {
-    category: "Open Source" as const,
-    readTime: "5 min read",
-    title: "MellyAI: Open Source Chatbot",
+    category: "Blog" as const,
+    readTime: "8 min read",
+    title:
+      "Code Obfuscation Explained: What It Is, How It Works, and When to Use It",
     description:
-      "Improved RAG/LLM, added setup guide, wrote contribution guidelines",
-    link: "#",
-    bgColor: "bg-blue-900",
+      "A comprehensive guide on what is Code Obfuscation, how it works, and when to use it.",
+    link: "https://the-erin.hashnode.dev/code-obfuscation-explained",
+    image: "/images/code-obfuscation.png",
   },
 ];
 
@@ -51,7 +55,7 @@ export const WritingSection: React.FC = () => {
               Works
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
+          <h2 className="text-3xl md:text-[38px] lg:text-[40px] font-normal text-[#1B1B1B] text-center">
             Read my tutorials, documentation, and
             <br className="hidden md:block" /> insights.
           </h2>
@@ -64,9 +68,11 @@ export const WritingSection: React.FC = () => {
         </div>
 
         <div className="text-center">
-          <button className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1B1B1B] to-[#FF8906] text-[#FBF5E4] font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]">
-            View all my Writing <GoArrowUpRight size={18} />
-          </button>
+          <Link href="/writing" passHref>
+            <button className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1B1B1B] to-[#FF8906] text-[#FBF5E4] font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]">
+              View all my Writing <GoArrowUpRight size={18} />
+            </button>
+          </Link>
         </div>
       </div>
     </section>

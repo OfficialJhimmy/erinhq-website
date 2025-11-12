@@ -2,6 +2,7 @@
 import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ContentCard {
   title: string;
@@ -15,8 +16,8 @@ const contentCards: ContentCard[] = [
   {
     title: "Making AI Tools More Human-Friendly",
     description:
-      "Talks, panels, and advocacy around open source, AI, and accessibility",
-    image: "/images/image 29.png",
+      "Talks, panels, and advocacy around software engineering, open source, AI, and accessibility",
+    image: "/images/speaking-erin.webp",
     link: "#",
     linkText: "Book me to speak",
   },
@@ -25,15 +26,15 @@ const contentCards: ContentCard[] = [
     description:
       "Bite-sized tutorials and insights I share with my growing social audience",
     image: "/images/image 30.png",
-    link: "#",
+    link: "",
     linkText: "See my socials",
   },
   {
     title: "Lifestyle Lens",
     description:
       "A peek into my world outside tech – fitness, music, and travel.",
-    image: "/images/image 31.png",
-    link: "#",
+    image: "/images/ig-screenshot.jpg",
+    link: "https://www.instagram.com/erinthebrand/",
     linkText: "Peek into my world",
   },
 ];
@@ -55,8 +56,8 @@ export const DigitalFootprintSection: React.FC = () => {
             Digital Footprint
           </span>
         </div>
-        
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+
+        <h2 className="text-3xl md:text-[38px] lg:text-[40px] font-normal text-[#1B1B1B] mb-6">
           Beyond the Code
         </h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -81,7 +82,7 @@ export const DigitalFootprintSection: React.FC = () => {
               />
             </div>
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-[#1B1B1B] mb-3">
                 {card.title}
               </h3>
               <p className="text-[#696969] text-sm mb-4 leading-relaxed">
@@ -99,9 +100,11 @@ export const DigitalFootprintSection: React.FC = () => {
       </div>
 
       <div className="text-center mt-12">
-      <button className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1B1B1B] to-[#FF8906] text-[#FBF5E4] font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]">
-          Explore my Digital Footprint <GoArrowUpRight size={18} />
-        </button>
+        <Link href="/digital-footprint" passHref>
+          <button className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1B1B1B] to-[#FF8906] text-[#FBF5E4] font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]">
+            Explore my Digital Footprint <GoArrowUpRight size={18} />
+          </button>
+        </Link>
       </div>
     </section>
   );

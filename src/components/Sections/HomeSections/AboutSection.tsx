@@ -24,7 +24,7 @@ export const AboutSection: React.FC = () => {
               </span>
               
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-[38px] lg:text-[40px] font-normal text-[#1B1B1B] mb-6">
                 About ERIN THE BRAND
               </h2>
               <p className="text-[#1B1B1B] leading-relaxed mb-6">
