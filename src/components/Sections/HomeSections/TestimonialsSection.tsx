@@ -57,6 +57,13 @@ const testimonials: Testimonial[] = [
     testimonial: "Working with Feyijimi at Datamellon has been an outstanding experience. His frontend engineering expertise is truly impressive, and collaborating with him as a backend engineer has been seamless. Our integration process was smooth, with minimal friction, thanks to his clear communication and technical precision. Feyijimi’s attention to detail consistently stands out"
   },
   {
+    name: 'Delight Olaoluwa',
+    role: 'AI/ML Engineer ',
+    avatar: '/images/dee.jpeg',
+    rating: 5,
+    testimonial: "I’ve had the opportunity to work closely with Jimi on several projects at Datamellon, where his unique blend of software engineering, technical writing and cloud expertise consistently shine. Jimi has successfully worked on the development and deployment of multiple custom applications for enterprise clients, demonstrating exceptional proficiency in AI integration, cloud architecture, and full-stack development using React, Next.js, TypeScript, and Node.js. His dual AWS certifications as a Solutions Architect and Developer at the Associate level also greatly validate his technical depth. Beyond his impressive technical contributions, Jimi's commitment to knowledge sharing through technical writing, documentation engineering, and content creation under his brand reflects a genuine passion for empowering the broader developer community. His ability to translate complex technical concepts into accessible resources, coupled with his mentorship of junior engineers through code reviews and structured guidance, makes him an invaluable collaborator who not only delivers exceptional code but also strengthens the entire engineering ecosystem around him."
+  },
+  {
     name: 'Toyibat Adele',
     role: 'Technical Writer',
     avatar: '/images/toyibat.jpeg',
@@ -78,7 +85,7 @@ export const TestimonialsSection: React.FC = () => {
 
     let animationId: number;
     let scrollPosition = 0;
-    const scrollSpeed = 0.3; // Slower speed for testimonials
+    const scrollSpeed = 0.9; // Slower speed for testimonials
 
     const animate = () => {
       if (!isPaused && scrollContainer) {

@@ -3,6 +3,7 @@ import React from "react";
 import { BsArrowUpRight } from "react-icons/bs";
 import { ProjectsCarousel } from "@/components/Carousels/ProjectsCarousel";
 import Image from "next/image";
+import Link from "next/link";
 
 const projects = [
   {
@@ -57,12 +58,12 @@ export const ProjectsSection: React.FC = () => {
             Check out the Software Projects & Open Source Work I've Built
           </h2>
         </div>
-        <a
-          href="#"
+        <Link
+          href="/portfolio"
           className="inline-flex items-center gap-2 text-gray-900 font-medium hover:gap-3 transition-all whitespace-nowrap underline"
         >
           Explore my work <BsArrowUpRight size={18} />
-        </a>
+        </Link>
       </div>
 
       <ProjectsCarousel projects={projects} />

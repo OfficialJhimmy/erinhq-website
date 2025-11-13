@@ -5,7 +5,7 @@ import { GoArrowDownRight } from "react-icons/go";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#1B1B1B] text-center px-6 pt-24 md:pt-28 lg:pt-32">
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#1B1B1B] text-center px-6 pt-24 pb-24 md:pt-28 lg:pt-32">
       <div className="absolute left-8 top-16 lg:top-24 md:block hidden">
         <Image
           src="/images/erin-two.png"
@@ -50,7 +50,7 @@ export default function Hero() {
       <Link
         href="/portfolio"
         className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-400 to-yellow-400 text-[#1B1B1B] font-body font-medium rounded-full transition-transform hover:scale-105"
-        style={{ marginTop: "18px", padding: "16px" }}
+        style={{ marginTop: "28px", padding: "16px" }}
       >
         Explore my work ↗
       </Link>

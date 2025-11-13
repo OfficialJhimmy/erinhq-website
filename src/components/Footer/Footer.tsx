@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-white/80 hover:text-white transition-colors text-[17px] lg:text-sm"
+                    className="text-white/80 hover:text-[#E8B67E] transition-colors text-[17px] lg:text-sm"
                   >
                     {link.name}
                   </Link>
@@ -87,7 +87,7 @@ export const Footer: React.FC = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/80 hover:text-white transition-colors"
+                      className="text-white/80 hover:text-[#E8B67E] transition-colors"
                       aria-label={social.name}
                     >
                       <IconComponent />
@@ -123,14 +123,14 @@ export const Footer: React.FC = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-white/60 hover:text-white transition-colors text-sm"
+                className="text-white/60 hover:text-[#E8B67E] transition-colors text-sm"
               >
                 {link.name}
               </Link>
             ))}
           </div>
           <p className="text-white/60 text-sm">
-            © {currentYear} The ERIN. All rights reserved.
+            © {currentYear} ERINHQ. All rights reserved.
           </p>
         </div>
       </div>

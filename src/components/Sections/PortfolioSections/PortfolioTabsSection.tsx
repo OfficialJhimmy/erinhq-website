@@ -6,6 +6,7 @@ import { getProjectsByCategory, ProjectCategory } from '@/data/portfolioData';
 import { ProjectCardPortfolio } from '@/components/Cards/ProjectCardPortfolio';
 
 const tabs = [
+  { id: 'all', label: 'All' },
   { id: 'portfolio', label: 'Personal Portfolios' },
   { id: 'company', label: 'Company Website' },
   { id: 'software tools', label: 'Software Tools' },

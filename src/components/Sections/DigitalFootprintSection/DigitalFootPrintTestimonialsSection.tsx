@@ -78,7 +78,7 @@ export const DigitalFootPrintTestimonialsSection: React.FC = () => {
 
     let animationId: number;
     let scrollPosition = 0;
-    const scrollSpeed = 0.3; // Slower speed for testimonials
+    const scrollSpeed = 0.9; // Slower speed for testimonials
 
     const animate = () => {
       if (!isPaused && scrollContainer) {

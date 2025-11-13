@@ -99,7 +99,7 @@ export default function ProjectDetailPage({
       </section>
 
       {/* Main Image */}
-      <section className="px-6 -mt-12">
+      <section className="px-6 mt-2">
         <div className="max-w-5xl mx-auto">
           <div className="aspect-video relative rounded-2xl overflow-hidden shadow-2xl">
             <Image

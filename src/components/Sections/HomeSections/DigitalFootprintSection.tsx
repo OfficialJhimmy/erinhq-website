@@ -26,7 +26,7 @@ const contentCards: ContentCard[] = [
     description:
       "Bite-sized tutorials and insights I share with my growing social audience",
     image: "/images/image 30.png",
-    link: "",
+    link: "/links",
     linkText: "See my socials",
   },
   {
@@ -90,6 +90,8 @@ export const DigitalFootprintSection: React.FC = () => {
               </p>
               <a
                 href={card.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-gray-900 hover:gap-3 transition-all"
               >
                 {card.linkText} <GoArrowUpRight size={16} />

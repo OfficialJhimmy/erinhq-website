@@ -1,36 +1,40 @@
 // components/sections/WritingTabsSection.tsx
-'use client';
+"use client";
 
-import React, { useState, useMemo } from 'react';
-import { getArticlesByCategory, ArticleCategory, Article } from '@/data/writingData';
-import { ArticleCardWriting } from '@/components/Cards/ArticleCardWriting';
-import { Search, ChevronLeft, ChevronRight, Filter, X } from 'lucide-react';
+import React, { useState, useMemo } from "react";
+import {
+  getArticlesByCategory,
+  ArticleCategory,
+  Article,
+} from "@/data/writingData";
+import { ArticleCardWriting } from "@/components/Cards/ArticleCardWriting";
+import { Search, ChevronLeft, ChevronRight, Filter, X } from "lucide-react";
 
 const tabs = [
-  { id: 'blogs' as ArticleCategory, label: 'Blogs' },
-  { id: 'caseStudies' as ArticleCategory, label: 'Case Studies' },
-  { id: 'apiDocs' as ArticleCategory, label: 'API Documentation' },
-  { id: 'openSource' as ArticleCategory, label: 'Open Source' },
-  { id: 'contentForBrands' as ArticleCategory, label: 'Content for Brands' },
+  { id: "blogs" as ArticleCategory, label: "Blogs" },
+  { id: "caseStudies" as ArticleCategory, label: "Case Studies" },
+  { id: "apiDocs" as ArticleCategory, label: "API Documentation" },
+  { id: "openSource" as ArticleCategory, label: "Open Source" },
+  { id: "contentForBrands" as ArticleCategory, label: "Content for Brands" },
 ];
 
 const ITEMS_PER_PAGE = 6;
 
 export const WritingTabsSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ArticleCategory>('blogs');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState<ArticleCategory>("blogs");
+  const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
-  
+
   // Get all articles for the active tab
   const allArticles = getArticlesByCategory(activeTab);
 
   // Extract unique tags from current category articles
   const availableTags = useMemo(() => {
     const tags = new Set<string>();
-    allArticles.forEach(article => {
-      article.tags.forEach(tag => tags.add(tag));
+    allArticles.forEach((article) => {
+      article.tags.forEach((tag) => tags.add(tag));
     });
     return Array.from(tags).sort();
   }, [allArticles]);
@@ -42,20 +46,19 @@ export const WritingTabsSection: React.FC = () => {
     // Search filter
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(article =>
-        article.title.toLowerCase().includes(query) ||
-        article.description.toLowerCase().includes(query) ||
-        article.tags.some(tag => tag.toLowerCase().includes(query)) ||
-        article.companyName?.toLowerCase().includes(query)
+      filtered = filtered.filter(
+        (article) =>
+          article.title.toLowerCase().includes(query) ||
+          article.description.toLowerCase().includes(query) ||
+          article.tags.some((tag) => tag.toLowerCase().includes(query)) ||
+          article.companyName?.toLowerCase().includes(query)
       );
     }
 
     // Tag filter
     if (selectedTags.length > 0) {
-      filtered = filtered.filter(article =>
-        selectedTags.some(selectedTag =>
-          article.tags.includes(selectedTag)
-        )
+      filtered = filtered.filter((article) =>
+        selectedTags.some((selectedTag) => article.tags.includes(selectedTag))
       );
     }
 
@@ -65,16 +68,19 @@ export const WritingTabsSection: React.FC = () => {
   // Pagination
   const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedArticles = filteredArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const paginatedArticles = filteredArticles.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
 
   // Determine layout
-  const useListLayout = !['blogs', 'tutorials'].includes(activeTab);
+  const useListLayout = !["blogs", "tutorials"].includes(activeTab);
 
   // Reset to page 1 when filters change
   const handleTabChange = (tabId: ArticleCategory) => {
     setActiveTab(tabId);
     setCurrentPage(1);
-    setSearchQuery('');
+    setSearchQuery("");
     setSelectedTags([]);
   };
 
@@ -84,21 +90,19 @@ export const WritingTabsSection: React.FC = () => {
   };
 
   const toggleTag = (tag: string) => {
-    setSelectedTags(prev =>
-      prev.includes(tag)
-        ? prev.filter(t => t !== tag)
-        : [...prev, tag]
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
     );
     setCurrentPage(1);
   };
 
   const clearAllFilters = () => {
-    setSearchQuery('');
+    setSearchQuery("");
     setSelectedTags([]);
     setCurrentPage(1);
   };
 
-  const hasActiveFilters = searchQuery.trim() !== '' || selectedTags.length > 0;
+  const hasActiveFilters = searchQuery.trim() !== "" || selectedTags.length > 0;
 
   return (
     <section className="py-20 px-6">
@@ -111,8 +115,8 @@ export const WritingTabsSection: React.FC = () => {
               onClick={() => handleTabChange(tab.id)}
               className={`px-6 py-2.5 rounded-full font-medium text-sm transition-all ${
                 activeTab === tab.id
-                  ? 'bg-[#1B1B1B] text-white'
-                  : 'bg-gray-100 text-[#525252] hover:bg-gray-200'
+                  ? "bg-[#1B1B1B] text-white"
+                  : "bg-gray-100 text-[#525252] hover:bg-gray-200"
               }`}
             >
               {tab.label}
@@ -125,7 +129,10 @@ export const WritingTabsSection: React.FC = () => {
           <div className="flex flex-col md:flex-row gap-4">
             {/* Search Input */}
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-black" size={20} />
+              <Search
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-black"
+                size={20}
+              />
               <input
                 type="text"
                 placeholder="Search articles by title, tags, or company..."
@@ -135,7 +142,7 @@ export const WritingTabsSection: React.FC = () => {
               />
               {searchQuery && (
                 <button
-                  onClick={() => setSearchQuery('')}
+                  onClick={() => setSearchQuery("")}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   <X size={20} />
@@ -148,8 +155,8 @@ export const WritingTabsSection: React.FC = () => {
               onClick={() => setShowFilters(!showFilters)}
               className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
                 selectedTags.length > 0
-                  ? 'bg-[#1B1B1B] text-white'
-                  : 'bg-gray-100 text-[#525252] hover:bg-gray-200'
+                  ? "bg-[#1B1B1B] text-white"
+                  : "bg-gray-100 text-[#525252] hover:bg-gray-200"
               }`}
             >
               <Filter size={20} />
@@ -166,7 +173,9 @@ export const WritingTabsSection: React.FC = () => {
           {showFilters && availableTags.length > 0 && (
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
               <div className="flex items-center justify-between mb-3">
-                <p className="text-sm font-medium text-gray-700">Filter by Tags:</p>
+                <p className="text-sm font-medium text-gray-700">
+                  Filter by Tags:
+                </p>
                 {selectedTags.length > 0 && (
                   <button
                     onClick={clearAllFilters}
@@ -183,8 +192,8 @@ export const WritingTabsSection: React.FC = () => {
                     onClick={() => toggleTag(tag)}
                     className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
                       selectedTags.includes(tag)
-                        ? 'bg-[#1B1B1B] text-white'
-                        : 'bg-white text-[#525252] border border-gray-200 hover:border-gray-300'
+                        ? "bg-[#1B1B1B] text-white"
+                        : "bg-white text-[#525252] border border-gray-200 hover:border-gray-300"
                     }`}
                   >
                     {tag}
@@ -198,12 +207,13 @@ export const WritingTabsSection: React.FC = () => {
           {hasActiveFilters && (
             <div className="flex items-center gap-3 text-sm text-gray-600">
               <span>
-                Showing {filteredArticles.length} of {allArticles.length} articles
+                Showing {filteredArticles.length} of {allArticles.length}{" "}
+                articles
               </span>
               {selectedTags.length > 0 && (
                 <div className="flex items-center gap-2">
                   <span className="text-gray-400">|</span>
-                  <span>Filtered by: {selectedTags.join(', ')}</span>
+                  <span>Filtered by: {selectedTags.join(", ")}</span>
                 </div>
               )}
             </div>
@@ -250,59 +260,66 @@ export const WritingTabsSection: React.FC = () => {
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-2">
                 <button
-                  onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(1, prev - 1))
+                  }
                   disabled={currentPage === 1}
                   className="p-2 rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   aria-label="Previous page"
                 >
-                  <ChevronLeft size={20} />
+                  <ChevronLeft size={20} className="text-black"/>
                 </button>
 
                 <div className="flex items-center gap-2">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
-                    // Show first page, last page, current page, and pages around current
-                    const showPage =
-                      page === 1 ||
-                      page === totalPages ||
-                      (page >= currentPage - 1 && page <= currentPage + 1);
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (page) => {
+                      // Show first page, last page, current page, and pages around current
+                      const showPage =
+                        page === 1 ||
+                        page === totalPages ||
+                        (page >= currentPage - 1 && page <= currentPage + 1);
 
-                    const showEllipsis =
-                      (page === currentPage - 2 && currentPage > 3) ||
-                      (page === currentPage + 2 && currentPage < totalPages - 2);
+                      const showEllipsis =
+                        (page === currentPage - 2 && currentPage > 3) ||
+                        (page === currentPage + 2 &&
+                          currentPage < totalPages - 2);
 
-                    if (showEllipsis) {
+                      if (showEllipsis) {
+                        return (
+                          <span key={page} className="px-2 text-gray-400">
+                            ...
+                          </span>
+                        );
+                      }
+
+                      if (!showPage) return null;
+
                       return (
-                        <span key={page} className="px-2 text-gray-400">
-                          ...
-                        </span>
+                        <button
+                          key={page}
+                          onClick={() => setCurrentPage(page)}
+                          className={`min-w-[40px] h-10 rounded-lg font-medium transition-all ${
+                            currentPage === page
+                              ? "bg-[#1B1B1B] text-white"
+                              : "border border-gray-200 hover:bg-gray-50 text-[#525252]"
+                          }`}
+                        >
+                          {page}
+                        </button>
                       );
                     }
-
-                    if (!showPage) return null;
-
-                    return (
-                      <button
-                        key={page}
-                        onClick={() => setCurrentPage(page)}
-                        className={`min-w-[40px] h-10 rounded-lg font-medium transition-all ${
-                          currentPage === page
-                            ? 'bg-[#1B1B1B] text-white'
-                            : 'border border-gray-200 hover:bg-gray-50 text-[#525252]'
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    );
-                  })}
+                  )}
                 </div>
 
                 <button
-                  onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+                  }
                   disabled={currentPage === totalPages}
                   className="p-2 rounded-lg border border-gray-200 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   aria-label="Next page"
                 >
-                  <ChevronRight size={20} />
+                  <ChevronRight size={20} className="text-black"/>
                 </button>
               </div>
             )}
@@ -318,8 +335,8 @@ export const WritingTabsSection: React.FC = () => {
             </h3>
             <p className="text-gray-500 mb-6">
               {hasActiveFilters
-                ? 'Try adjusting your search or filters'
-                : 'No content available in this category yet.'}
+                ? "Try adjusting your search or filters"
+                : "No content available in this category yet."}
             </p>
             {hasActiveFilters && (
               <button

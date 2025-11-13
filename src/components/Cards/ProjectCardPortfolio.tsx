@@ -48,7 +48,7 @@ export const ProjectCardPortfolio: React.FC<ProjectCardPortfolioProps> = ({
 
             {/* Explore Link */}
             <div className="inline-flex items-center gap-2 text-white font-medium text-sm group-hover:gap-3 transition-all">
-              Explore Website
+              View Project
               <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </div>
