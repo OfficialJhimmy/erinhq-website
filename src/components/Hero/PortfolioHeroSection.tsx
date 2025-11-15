@@ -1,5 +1,5 @@
 // components/sections/PortfolioHeroSection.tsx
-import React from 'react';
+import React from "react";
 
 export const PortfolioHeroSection: React.FC = () => {
   return (
@@ -16,7 +16,12 @@ export const PortfolioHeroSection: React.FC = () => {
           {/* Right Side - Description */}
           <div>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
-              Welcome to my portfolio! I'm a passionate creator dedicated to crafting unique user experiences through design and innovation. Explore my work and discover how I can bring your vision to life.
+              Welcome to my portfolio. I build digital experiences that are
+              clear, intentional, and built to make an impact. My work brings
+              together design, engineering, and simple human communication to
+              create products that solve real problems. Feel free to explore the
+              projects I’ve worked on and see how I bring ideas to life through
+              thoughtful execution.
             </p>
           </div>
         </div>

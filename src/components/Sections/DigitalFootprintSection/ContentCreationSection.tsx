@@ -110,7 +110,7 @@ export const ContentCreationSection: React.FC = () => {
             Content Creation
           </h2>
           <p className="text-[#4D4D4D] text-base md:text-[20px] leading-relaxed">
-            I make short, impactful videos that cover everything from frontend engineering tips to productivity hacks. My goal is always the same: create content that people replay, save, and share because it feels practical and inspiring.
+            I make short, impactful videos that cover everything from software engineering tips to productivity hacks. My goal is always the same: create content that people replay, save, and share because it feels practical and inspiring.
           </p>
         </div>
 

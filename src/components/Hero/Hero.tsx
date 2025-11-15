@@ -69,9 +69,13 @@ export default function Hero() {
         <p className="font-body font-medium text-[18px] sm:text-[20px]">
           Get In Touch With ERIN
         </p>
-        <p className="font-body font-normal text-[16px] sm:text-[18px] text-white">
+
+        <a
+          href="mailto:creatives@erinhq.com"
+          className="font-body font-normal text-[16px] sm:text-[18px] text-white"
+        >
           creatives@erinhq.com
-        </p>
+        </a>
       </div>
     </section>
   );

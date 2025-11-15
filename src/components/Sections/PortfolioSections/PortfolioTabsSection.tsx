@@ -1,20 +1,20 @@
 // components/sections/PortfolioTabsSection.tsx
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { getProjectsByCategory, ProjectCategory } from '@/data/portfolioData';
-import { ProjectCardPortfolio } from '@/components/Cards/ProjectCardPortfolio';
+import React, { useState } from "react";
+import { getProjectsByCategory, ProjectCategory } from "@/data/portfolioData";
+import { ProjectCardPortfolio } from "@/components/Cards/ProjectCardPortfolio";
 
 const tabs = [
-  { id: 'all', label: 'All' },
-  { id: 'portfolio', label: 'Personal Portfolios' },
-  { id: 'company', label: 'Company Website' },
-  { id: 'software tools', label: 'Software Tools' },
-  { id: 'ai', label: 'AI Tools' },
+  { id: "all", label: "All" },
+  { id: "portfolio", label: "Personal Portfolios" },
+  { id: "company", label: "Company Website" },
+  { id: "software tools", label: "Software Tools" },
+  { id: "ai", label: "AI Tools" },
 ];
 
 export const PortfolioTabsSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ProjectCategory>('all');
+  const [activeTab, setActiveTab] = useState<ProjectCategory>("all");
   const projects = getProjectsByCategory(activeTab);
 
   return (
@@ -22,7 +22,7 @@ export const PortfolioTabsSection: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Intro Text */}
         <p className="text-[#525252] text-center max-w-3xl mx-auto mb-8 leading-relaxed">
-          Building personal brands online is something I enjoy because it blends design, storytelling, and engineering.
+        I enjoy building personal and company brands online because it lets me blend creativity with technical thinking. Whether it’s a personal website, company website, software tool, or AI product, my goal is to create work that is simple, useful, and meaningful.
         </p>
 
         {/* Tabs */}
@@ -33,8 +33,8 @@ export const PortfolioTabsSection: React.FC = () => {
               onClick={() => setActiveTab(tab.id as ProjectCategory)}
               className={`px-6 py-2.5 rounded-full font-medium text-sm transition-all ${
                 activeTab === tab.id
-                  ? 'bg-[#1B1B1B] text-white'
-                  : 'bg-white text-[#525252] border border-gray-300 hover:border-gray-400'
+                  ? "bg-[#1B1B1B] text-white"
+                  : "bg-white text-[#525252] border border-gray-300 hover:border-gray-400"
               }`}
             >
               {tab.label}

@@ -1,8 +1,9 @@
 // components/Footer.tsx
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Facebook, Instagram, Linkedin } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
+import { FaTiktok } from "react-icons/fa";
 
 // Custom X (Twitter) Icon component
 const XIcon = () => (
@@ -24,22 +25,22 @@ export const Footer: React.FC = () => {
     { name: "About ERIN", href: "/about" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Writing", href: "/writing" },
-    { name: "Media Kit", href: "/media-kit" },
     { name: "Digital Footprint", href: "/digital-footprint" },
+    { name: "Get in Touch", href: "/links" },
     { name: "Work With Me", href: "/work-with-me" },
   ];
 
   const footerLinks = [
-    { name: "Privacy Policy", href: "/privacy-policy" },
-    { name: "Terms of Service", href: "/terms" },
-    { name: "Cookies Settings", href: "/cookies" },
+    { name: "Privacy Policy", href: "#" },
+    { name: "Terms of Service", href: "#" },
+    { name: "Cookies Settings", href: "#" },
   ];
 
   const socialLinks = [
-    { name: "Facebook", icon: Facebook, href: "#" },
-    { name: "Instagram", icon: Instagram, href: "#" },
-    { name: "X (Twitter)", icon: XIcon, href: "#" },
-    { name: "LinkedIn", icon: Linkedin, href: "#" },
+    { name: "TikTok", icon: FaTiktok, href: "https://www.tiktok.com/@erinthebrand?_r=1&_t=ZS-91LVN0OmxrJ" },
+    { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/erinthebrand" },
+    { name: "X (Twitter)", icon: XIcon, href: "https://x.com/erinthebrand" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/feyijimierinle" },
   ];
 
   return (
@@ -98,8 +99,9 @@ export const Footer: React.FC = () => {
             </div>
             <div>
               <a
-                href="/contact"
-                // className="inline-flex items-center gap-2 bg-[#FFFBF1] text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-white transition-all hover:gap-3 whitespace-nowrap"
+                href="https://erinhq.fillout.com/contact-me"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-[linear-gradient(90deg,#FFFFFF,#FFC687,#FF8906)] text-[#1B1B1B] font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]"
               >
                 Get in Touch <ArrowRight size={18} />

@@ -13,25 +13,25 @@ interface ProcessStep {
 const processSteps: ProcessStep[] = [
   {
     number: '01',
-    description: 'You reach out with your request and idea."',
+    description: 'Reach out with your idea or project request. Share your goals, audience, and vision.',
     bgColor: '#FFDAF8',
     alignment: 'left',
   },
   {
     number: '02',
-    description: 'We hop on a quick call or exchange emails to clarify your goals.',
+    description: 'We schedule a quick call or email exchange to clarify objectives, timelines, and key outcomes.',
     bgColor: '#FFFBF1',
     alignment: 'right',
   },
   {
     number: '03',
-    description: 'I draft an outline or content plan so you know what to expect.',
+    description: 'I create a tailored content plan or strategy outline so you know exactly what to expect.',
     bgColor: '#E2FFFE',
     alignment: 'left',
   },
   {
     number: '04',
-    description: 'Once we’re aligned, I create, deliver, and share with your audience.',
+    description: 'After approval, I produce, deliver, and optimize the content to engage your audience effectively.',
     bgColor: '#FFEAE7',
     alignment: 'right',
   }

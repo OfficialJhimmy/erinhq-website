@@ -13,7 +13,7 @@ interface ProcessStep {
 const processSteps: ProcessStep[] = [
   {
     number: '01',
-    description: 'You reach out with what you need. Maybe you want a developer, a writer, or both. Just send me a message with the subject "Work With Me."',
+    description: 'You reach out with what you need. Maybe you want a developer, a writer, or both. Start by filling out a brief form. Share your goals, project type, and what you hope to achieve.',
     bgColor: '#FFFBF1',
     alignment: 'left',
   },

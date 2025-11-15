@@ -1,6 +1,6 @@
 // components/sections/AboutStorySection.tsx
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 export const AboutStorySection: React.FC = () => {
   return (
@@ -27,7 +27,7 @@ export const AboutStorySection: React.FC = () => {
         </div>
 
         {/* Story Content */}
-        <div className="space-y-6 text-[#525252] leading-relaxed">
+        {/* <div className="space-y-6 text-[#525252] leading-relaxed">
           <p className="text-base md:text-lg">
             My name is Feyijimi Erinle, or you can call me ERIN, and I live in Lagos, Nigeria. Looking back, I've always been the kind of person who was curious about how computers and the internet worked. I loved tinkering with phones, trying out new tools, and imagining what it would be like to build something of my own.
           </p>
@@ -50,6 +50,62 @@ export const AboutStorySection: React.FC = () => {
 
           <p className="text-base md:text-lg">
             At the core of it all, I'm someone who believes in continuous growth—both as a developer and as a person. I'm always looking for the next challenge, the next thing to learn, and the next way to make an impact.
+          </p>
+        </div> */}
+        <div className="space-y-6 text-[#525252] leading-relaxed">
+          <p className="text-base md:text-lg">
+            My name is Feyijimi Erinle, but most people simply call me ERIN. I’m
+            based in Lagos, Nigeria, and my journey into tech started long
+            before I realised it. I was that kid who wanted to know why
+            computers behaved the way they did, why websites worked the way they
+            did, and why a single line of code could change everything. I was
+            always exploring, fixing, breaking, and testing things without even
+            knowing it was shaping my future.
+          </p>
+
+          <p className="text-base md:text-lg">
+            Things became clearer during my final year at the University of
+            Lagos where I studied Actuarial Science. I had no defined post
+            graduation plan. Then one afternoon, someone came to our department
+            to introduce a beginner Python workshop, and that single moment
+            shifted everything for me. I followed the spark and it opened a
+            world I didn’t know I needed.
+          </p>
+
+          <p className="text-base md:text-lg">
+            I taught myself to code. I built small projects. I made mistakes and
+            learned from them. There were days when nothing made sense, but the
+            joy of solving problems kept me going. Over time, I realised that my
+            strength was not just in writing code but in explaining it. Turning
+            complex concepts into simple, clear language became something I
+            genuinely enjoyed.
+          </p>
+
+          <p className="text-base md:text-lg">
+            Today, I work as a Software Engineer and Technical Writer. My work
+            sits at the intersection of building and teaching. I create, I
+            document, and I share. I’m passionate about helping people
+            understand technology in a way that feels welcoming rather than
+            intimidating. Whether I’m writing documentation, creating tutorials,
+            or contributing to open source projects, my goal is to make tech
+            easier for someone else.
+          </p>
+
+          <p className="text-base md:text-lg">
+            Beyond work, I’m a person who loves fitness, music, and discovering
+            new places when I can. I enjoy meaningful conversations, connecting
+            with other builders and creators, and contributing to communities
+            that help people grow. I’m constantly learning, constantly
+            experimenting, and constantly improving.
+          </p>
+
+          <p className="text-base md:text-lg">
+            At the heart of everything I do is growth. Growth as an engineer.
+            Growth as a writer. Growth as a creator. Growth as a person. I’m
+            driven by the belief that every skill can be refined, every idea can
+            be improved, and every experience can shape the next chapter. I’m
+            always looking forward to what I can build, who I can help, and the
+            impact I can make along the way.
           </p>
         </div>
       </div>

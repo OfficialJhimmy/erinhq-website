@@ -1,6 +1,6 @@
 // components/sections/SpeakingSection.tsx
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 export const SpeakingSection: React.FC = () => {
   return (
@@ -32,14 +32,20 @@ export const SpeakingSection: React.FC = () => {
           {/* Left Column */}
           <div>
             <p className="text-[#333] text-base md:text-[20px] leading-relaxed">
-              I make short, impactful videos that cover everything from frontend engineering tips to productivity hacks. My goal is always the same: create content that people replay, save, and share because it feels practical and inspiring.
+              I speak on topics ranging from software engineering and technology
+              to productivity and personal growth. My goal is to deliver talks
+              that are practical, engaging, and inspiring, leaving audiences
+              with ideas they can immediately apply.
             </p>
           </div>
 
           {/* Right Column */}
           <div>
             <p className="text-[#333] text-base md:text-lg leading-relaxed">
-              I've had the privilege of reaching thousands of people across platforms, and the most rewarding part has been the conversations that spark from it.
+              Over the years, I’ve had the privilege of reaching thousands of
+              people across events and platforms. The most rewarding part has
+              been the conversations and connections that follow, sparking new
+              perspectives and collaboration.
             </p>
           </div>
         </div>

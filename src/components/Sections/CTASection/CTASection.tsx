@@ -16,7 +16,9 @@ export const CTASection: React.FC<CTASectionProps> = ({ variant = 'default' }) =
               Have a project in mind?
             </h2>
             <a
-              href="/contact"
+              href="https://erinhq.fillout.com/contact-me"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-[linear-gradient(90deg,#FFFFFF,#FFC687,#FF8906)] text-[#1B1B1B] font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]"            >
               Get in Touch <ArrowRight size={20} />
             </a>
