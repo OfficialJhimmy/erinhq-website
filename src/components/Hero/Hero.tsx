@@ -15,8 +15,8 @@ export default function Hero() {
         Feyijimi Erinle, also known as ERIN
       </p>
 
-      <h1 className="font-heading text-transparent bg-gradient-to-r from-white to-[#FF8906] bg-clip-text text-4xl sm:text-5xl md:text-6xl lg:text-6xl leading-[1.15] font-normal max-w-4xl">
-        I build software and AI solutions companies actually rely on
+      <h1 className="font-body text-transparent bg-gradient-to-r from-white to-[#FF8906] bg-clip-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] font-normal max-w-4xl">
+        I Build Software and AI Solutions Companies Actually Rely On
       </h1>
 
       <p className="mt-8 text-[#E2E2E2] font-body text-base md:text-xl max-w-2xl leading-relaxed">
