@@ -6,6 +6,7 @@ import { ArrowRight, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 import { FaTiktok } from "react-icons/fa";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { useRestrictedSession } from "@/hooks/useRestrictedSession";
 
 // Custom X (Twitter) Icon component
 const XIcon = () => (
@@ -22,6 +23,7 @@ const XIcon = () => (
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const isRestricted = useRestrictedSession();
 
   const { trackButtonClick } = useAnalytics();
   const { trackLinkClick } = useAnalytics();
@@ -55,31 +57,46 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start lg:items-center gap-8 mb-12">
           <div className="flex flex-col gap-6">
             <div>
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/images/white-erin-logo.png"
-                  alt="ERIN Logo"
-                  width={80}
-                  height={40}
-                  className="h-[90px] w-auto"
-                  loading="lazy"
-                />
-              </Link>
+              {isRestricted ? (
+                <div className="flex items-center">
+                  <Image
+                    src="/images/white-erin-logo.png"
+                    alt="ERIN Logo"
+                    width={80}
+                    height={40}
+                    className="h-[90px] w-auto"
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <Link href="/" className="flex items-center">
+                  <Image
+                    src="/images/white-erin-logo.png"
+                    alt="ERIN Logo"
+                    width={80}
+                    height={40}
+                    className="h-[90px] w-auto"
+                    loading="lazy"
+                  />
+                </Link>
+              )}
             </div>
-            <div>
-              {/* Navigation Links */}
-              <nav className="flex flex-col lg:flex-row flex-wrap gap-x-8 gap-y-4">
-                {navigationLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className="text-white/80 hover:text-[#E8B67E] transition-colors text-[17px] lg:text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </nav>
-            </div>
+            {!isRestricted && (
+              <div>
+                {/* Navigation Links */}
+                <nav className="flex flex-col lg:flex-row flex-wrap gap-x-8 gap-y-4">
+                  {navigationLinks.map((link) => (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className="text-white/80 hover:text-[#E8B67E] transition-colors text-[17px] lg:text-sm"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col gap-6">

@@ -8,11 +8,12 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { useRestrictedSession } from "@/hooks/useRestrictedSession";
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMinimalMode, setIsMinimalMode] = useState(false);
+  const isMinimalMode = useRestrictedSession();
   const pathname = usePathname();
 
   const { trackButtonClick } = useAnalytics();
@@ -24,44 +25,6 @@ export const Navbar: React.FC = () => {
     { name: "Writing", href: "/writing" },
     { name: "Work With Me", href: "/work-with-me" },
   ];
-
-  // Routes that should trigger minimal mode when accessed directly
-  const minimalModeRoutes = ["/portfolio", "/writing", "/links"];
-
-  // Check if user entered directly on a minimal mode route
-  useEffect(() => {
-    const hasNavigatedInternally = sessionStorage.getItem(
-      "hasNavigatedInternally"
-    );
-    const isMinimalRoute = minimalModeRoutes.includes(pathname);
-
-    if (isMinimalRoute && !hasNavigatedInternally) {
-      // User landed directly on a minimal mode route
-      setIsMinimalMode(true);
-      sessionStorage.setItem("directEntryMinimalMode", "true");
-    } else if (hasNavigatedInternally) {
-      // User has navigated internally, show full navbar
-      setIsMinimalMode(false);
-    } else if (
-      sessionStorage.getItem("directEntryMinimalMode") === "true" &&
-      isMinimalRoute
-    ) {
-      // Maintain minimal mode for direct entry users on minimal routes
-      setIsMinimalMode(true);
-    } else {
-      // User is on a normal route, mark as having navigated internally
-      sessionStorage.setItem("hasNavigatedInternally", "true");
-      setIsMinimalMode(false);
-    }
-  }, [pathname]);
-
-  // Handle internal navigation - marks that user has navigated within the site
-  const handleInternalNavigation = () => {
-    sessionStorage.setItem("hasNavigatedInternally", "true");
-    sessionStorage.removeItem("directEntryMinimalMode");
-    setIsMinimalMode(false);
-    setIsMenuOpen(false);
-  };
 
   // Handle scroll effect
   useEffect(() => {
@@ -87,7 +50,7 @@ export const Navbar: React.FC = () => {
   }, [isMenuOpen]);
 
   const handleLinkClick = () => {
-    handleInternalNavigation();
+    setIsMenuOpen(false);
   };
 
   const isActiveLink = (href: string) => {
@@ -105,20 +68,32 @@ export const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
-            {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center z-50"
-              onClick={handleInternalNavigation}
-            >
-              <Image
-                src="/images/erinhq.png"
-                alt="ERIN Logo"
-                width={60}
-                height={40}
-                className="h-[70px] w-auto"
-              />
-            </Link>
+            {/* Logo - not clickable in restricted mode */}
+            {isMinimalMode ? (
+              <div className="flex items-center z-50" aria-hidden="false">
+                <Image
+                  src="/images/erinhq.png"
+                  alt="ERIN Logo"
+                  width={60}
+                  height={40}
+                  className="h-[70px] w-auto"
+                />
+              </div>
+            ) : (
+              <Link
+                href="/"
+                className="flex items-center z-50"
+                onClick={handleLinkClick}
+              >
+                <Image
+                  src="/images/erinhq.png"
+                  alt="ERIN Logo"
+                  width={60}
+                  height={40}
+                  className="h-[70px] w-auto"
+                />
+              </Link>
+            )}
 
             {/* Desktop Navigation - Hidden in minimal mode */}
             {!isMinimalMode && (

@@ -35,7 +35,6 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  
   {
     id: "refactrd",
     title: "Refactrd: AI Engineering Studio Website",
@@ -62,7 +61,23 @@ export const projects: Project[] = [
     results:
       "The site gives Refactrd a single, structured place to send prospects instead of a deck or a call. The find your starting point flow now does the qualifying work that used to happen entirely on discovery calls.",
   },
-   {
+  {
+    id: "forgepoint-guild",
+    title: "Forgepoint Guild: Campus Community Platform",
+    shortDescription:
+      "A campus community platform for Forgepoint Guild, built around an application-only model that pushes students toward building real projects and skills before graduation rather than general networking.",
+    fullDescription:
+      "Forgepoint Guild is a student community structured around four pillars: mindset, skills, community, and impact. Rather than running as an open campus club, it operates on an application basis and centers its programming on campus tours, mentorship, and hands-on project building, positioning itself around the idea that students should be building real things before they graduate rather than waiting until after.",
+    category: ["company", "frontend"], // adjust if you also touched backend
+    image: "/images/forgepoint-guild-cover.png",
+    images: [],
+    technologies: ["Next.js"], // confirmed from the site's own image URLs, add the rest
+    year: "2026",
+    liveUrl: "https://www.forgepointguild.com",
+    client: "Forgepoint Guild",
+    role: "Lead Frontend Engineer",
+  },
+  {
     id: "startups-blueprint",
     title: "Startups Blueprint: Event and Registration Platform",
     shortDescription:
@@ -114,7 +129,7 @@ export const projects: Project[] = [
     results:
       "The membership page now carries the full weight of explaining and selling the program on its own, which matters for a pre launch community that's building trust before its first live session even happens.",
   },
- 
+
   {
     id: "melly-guard",
     title: "Melly Guard — AI-Powered Fraud Detection & Monitoring",
@@ -375,9 +390,7 @@ export const projects: Project[] = [
       "This Chrome Extension allows users to track their browsing activity by displaying a side panel with the last visit timestamp and basic page analytics. Users can see the number of links, words, and images on the current page, as well as a list of past visits to the same URL. The extension was built to combine an intuitive frontend interface with a robust backend API, demonstrating full-stack development skills in a browser extension context.",
     category: ["software tools", "frontend", "backend"],
     image: "/images/chrome-history-sidepanel-cover.png",
-    images: [
-      "/images/chrome-history-sidepanel-cover.png",
-    ],
+    images: ["/images/chrome-history-sidepanel-cover.png"],
     technologies: [
       "React.js",
       "TypeScript",
