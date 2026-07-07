@@ -28,7 +28,7 @@ export const PortfolioHeroSection: React.FC = () => {
 
           {/* Right Side - Heading and Description */}
           <div>
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal leading-tight text-white mb-6">
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tighter">
               Hi, I&apos;m Feyijimi Erinle. I Build Digital Experiences that
               are clear, intentional, and built to make an impact.
             </h1>
