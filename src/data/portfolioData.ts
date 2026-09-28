@@ -10,13 +10,27 @@ export type ProjectCategory =
   | "fullstack"
   | "ai";
 
+// New /projects taxonomy (additive — sits alongside the original `category`
+// field rather than replacing it, so nothing that reads `category` breaks).
+export type ProjectTag =
+  | "AI Engineering"
+  | "AI Automation"
+  | "Software Engineering"
+  | "Web Applications"
+  | "Platforms"
+  | "Websites & Digital Experiences";
+
 export interface Project {
   id: string; // URL slug
   title: string;
   shortDescription: string;
   fullDescription: string;
   category: ProjectCategory[];
-  image: string;
+  tags?: ProjectTag[];
+  // Optional: a small number of case studies (e.g. concepts, or work whose
+  // real screenshots live only on an external case study) have no local
+  // image yet. Consumers must render a placeholder rather than a broken img.
+  image?: string;
   images: string[]; // Gallery images for detail page
   technologies: string[];
   liveUrl?: string;
@@ -32,6 +46,14 @@ export interface Project {
     author: string;
     position: string;
   };
+  // Marks a project that is a concept/exploration rather than a shipped,
+  // deployed system. Omitted (undefined) means shipped/real.
+  status?: "concept";
+  // Credits the studio that actually built the project, when it wasn't
+  // ERIN's personal/solo work under the ERIN brand directly.
+  builtAt?: { name: string; url: string };
+  // Link to an existing published case study, if one exists externally.
+  caseStudyUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -43,6 +65,7 @@ export const projects: Project[] = [
     fullDescription:
       "Refactrd helps organizations move from AI experimentation to measurable operational impact through workflow transformation, AI assistants, AI enabled products, and AI operations. I led engineering on the studio's own website, turning a fairly abstract positioning problem, how do you sell operational impact rather than a tool, into a site structure that walks visitors through the problem, the transformation areas, why Refactrd, and a single clear call to action to find their starting point.",
     category: ["company", "frontend", "fullstack"],
+    tags: ["Websites & Digital Experiences", "Software Engineering"],
     image: "/images/refactrd-cover.png",
     images: [],
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
@@ -69,6 +92,7 @@ export const projects: Project[] = [
     fullDescription:
       "Forgepoint Guild is a student community structured around four pillars: mindset, skills, community, and impact. Rather than running as an open campus club, it operates on an application basis and centers its programming on campus tours, mentorship, and hands-on project building, positioning itself around the idea that students should be building real things before they graduate rather than waiting until after.",
     category: ["company", "frontend"], // adjust if you also touched backend
+    tags: ["Platforms", "Web Applications"],
     image: "/images/forgepoint-guild-cover.png",
     images: [],
     technologies: ["Next.js"], // confirmed from the site's own image URLs, add the rest
@@ -85,6 +109,7 @@ export const projects: Project[] = [
     fullDescription:
       "Startups Blueprint is a curated leadership event for women founders and operators, focused on structuring AI powered growth rather than general networking. I worked on the frontend, building out the speaker, schedule, and why attend sections and connecting the site to the event's external application flow. Since the event is intentionally exclusive rather than open, the site had to sell the room, the speakers, the case study opportunity, and the implementation pathway, more than it needed a simple ticket purchase flow.",
     category: ["company", "frontend"],
+    tags: ["Platforms", "Web Applications"],
     image: "/images/startups-blueprint-cover.png",
     images: [],
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
@@ -111,6 +136,7 @@ export const projects: Project[] = [
     fullDescription:
       "Sift Academy is a professional growth membership for early career professionals, built around live sessions, mentorship, and a structured six month journey toward visibility and career progress. I worked as lead software engineer on the site, which had to explain a fairly involved membership structure, monthly sessions, resource packs, milestone rewards, a job board, clearly enough that visitors understood the value before ever attending a live session.",
     category: ["company", "frontend", "fullstack"],
+    tags: ["Platforms", "Software Engineering"],
     image: "/images/sift-academy-cover.png",
     images: [],
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
@@ -138,6 +164,7 @@ export const projects: Project[] = [
     fullDescription:
       "Melly Guard is an AI-driven fraud monitoring and detection tool used by several banks in Nigeria. It provides real-time detection across multiple channels, monitors transactions for AML/CTF risks, offers explainable AI outputs for regulatory acceptance, and automates compliance workflows to reduce operational costs. I worked across the full stack, building the Next.js frontend, Node.js and Python backend services, containerizing everything with Docker, and managing deployments with Kubernetes on AWS. This project required high performance, reliability, and seamless integration with critical banking systems.",
     category: ["software tools", "ai", "frontend", "backend", "fullstack"],
+    tags: ["AI Engineering", "Software Engineering"],
     image: "/images/fraud-detection.png",
     images: [
       "/images/fraud-one.png",
@@ -185,6 +212,7 @@ export const projects: Project[] = [
     fullDescription:
       "DLS Travel and Consult is a Lagos and Berlin based relocation consultancy that guides students, professionals, and families through study, work, and family reunification pathways across Europe. I built their marketing website and consultation booking flow, covering country and program pages, a client testimonial system, and a booking integration tied directly to their consultation calendar. The goal was to take a service that depends heavily on trust and clarity and turn it into a site that explains complex visa pathways simply and converts visitors into booked consultations.",
     category: ["portfolio", "frontend"],
+    tags: ["Websites & Digital Experiences"],
     image: "/images/dls-travel-cover.png",
     images: [],
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
@@ -212,6 +240,7 @@ export const projects: Project[] = [
     fullDescription:
       "The AI Contract Generator is an MVP web application I built to allow users to create professional contracts efficiently. Users describe their business context in plain language, and the system delivers a complete, formatted contract in HTML, including section numbering, styling, and consistent terminology. I focused on architecting real-time systems that stream AI-generated content efficiently, handling token limits, API failures, and latency while maintaining a smooth, responsive user experience.",
     category: ["software tools", "ai", "frontend", "backend", "fullstack"],
+    tags: ["AI Engineering", "AI Automation", "Software Engineering"],
     image: "/images/ai-contract-read-cover.png",
     images: [
       "/images/ai-read-one.png",
@@ -258,6 +287,7 @@ export const projects: Project[] = [
     fullDescription:
       "Melly AI Suite is a collection of AI-powered GPT products developed by Datamellon, designed to address a wide range of industry-specific challenges in banking, insurance, fitness, lifestyle, and more. I served as the Lead Frontend Engineer across all 9 GPT applications, building highly interactive, scalable, and intuitive user interfaces. Using Next.js, React, TypeScript, TailwindCSS, and AWS Amplify, I created seamless user experiences for enterprise clients, ensuring that each GPT delivered actionable insights and smooth interactions for end users. The suite demonstrates advanced AI integration in real-world enterprise workflows.",
     category: ["ai", "frontend", "fullstack"],
+    tags: ["AI Engineering", "Software Engineering"],
     image: "/images/mellyai-cover.png",
     images: [
       "/images/mellyai-three.png",
@@ -303,6 +333,7 @@ export const projects: Project[] = [
     fullDescription:
       "The LSDPC Payment Portal is a comprehensive platform designed for Lagos State Development and Property Corporation, a state government entity that manages property sales, rentals, and development. The portal allows users to buy properties, pay rents, service charges, legal fees, perform change of ownership, land regularization, and submit complaints. It serves four distinct user personas: general users, MD, Marketing Admin, PLM Admin, and Finance Admin. I built the frontend using React and TypeScript, focusing on creating a responsive, accessible, and intuitive interface that simplifies complex property transactions for users while providing robust admin controls for internal teams.",
     category: ["software tools", "frontend", "fullstack"],
+    tags: ["Platforms", "Software Engineering"],
     image: "/images/lsdpc-cover.png",
     images: [
       "/images/lsdpc-one.png",
@@ -348,6 +379,7 @@ export const projects: Project[] = [
     fullDescription:
       "KlaudWorks is an AI-powered FinOps solution developed by Datamellon. It helps businesses maximize cloud value by monitoring, analyzing, and optimizing their cloud costs efficiently, similar to AWS Cost Explorer. I worked as a senior frontend engineer on a team of talented developers, building a highly responsive and interactive dashboard using TypeScript, React.js, and TailwindCSS. We also integrated AI-driven insights to provide actionable recommendations and real-time analytics for cloud financial management.",
     category: ["software tools", "frontend", "fullstack"],
+    tags: ["Software Engineering", "AI Automation"],
     image: "/images/klaudworks-cover.png",
     images: ["/images/klaudworks-one.png", "/images/klaudworks-two.png"],
     technologies: [
@@ -389,6 +421,7 @@ export const projects: Project[] = [
     fullDescription:
       "This Chrome Extension allows users to track their browsing activity by displaying a side panel with the last visit timestamp and basic page analytics. Users can see the number of links, words, and images on the current page, as well as a list of past visits to the same URL. The extension was built to combine an intuitive frontend interface with a robust backend API, demonstrating full-stack development skills in a browser extension context.",
     category: ["software tools", "frontend", "backend"],
+    tags: ["Software Engineering"],
     image: "/images/chrome-history-sidepanel-cover.png",
     images: ["/images/chrome-history-sidepanel-cover.png"],
     technologies: [
@@ -431,6 +464,7 @@ export const projects: Project[] = [
     fullDescription:
       "Datamellon is a Cloud-native software development and AI consulting company with operations in the UK, Nigeria, Ghana, Kenya, USA, Canada, Uganda, South Africa, Dubai and Saudi Arabia. They provide digital transformation services, Machine Learning solutions, and Generative AI consulting for enterprise and government organisations. I built a high-performance company website and an internal Content Management System to support their brand expansion and global presence.",
     category: ["company", "fullstack"],
+    tags: ["Websites & Digital Experiences", "Software Engineering"],
     image: "/images/datamellon-cover.png",
     images: [
       // "/images/datamellon-cover.png",
@@ -477,6 +511,7 @@ export const projects: Project[] = [
     fullDescription:
       "WriteTech Hub is a platform dedicated to clear, precise technical communication, enabling growth and innovation through technical content. The website highlights services like Technical Content Creation, Outsourcing & Hiring Solutions, and Technical Writing Development & Resources. I built a modern CMS website using WordPress, React, and JavaScript to allow constant updates while delivering a seamless user experience.",
     category: ["company", "frontend"],
+    tags: ["Platforms", "Websites & Digital Experiences"],
     image: "/images/wth.png",
     images: ["/images/wth-two.png", "/images/wth-one.png"],
     technologies: [
@@ -518,6 +553,7 @@ export const projects: Project[] = [
     fullDescription:
       "SongDis is a music distribution company that enables artists and global superstars to get their music everywhere — Spotify, Apple Music, and more. The platform allows users to upload music, access professional tools, maintain 100% ownership, and earn revenue in any currency. I led the frontend development, building a seamless, responsive, and interactive user experience for Admin, Artist, and Publisher Dashboards, while ensuring modularity and scalability across all components.",
     category: ["company", "frontend"],
+    tags: ["Platforms"],
     image: "/images/songdis-cover.png",
     images: ["/images/songdis-1.jpg", "/images/songdis-2.jpg"],
     technologies: [
@@ -558,6 +594,7 @@ export const projects: Project[] = [
     fullDescription:
       "Shestel is a global digital content platform designed to bring people together through the content they love. By leveraging movies, TV shows, and sports, the platform encourages engagement, connection, and community. As a founding software engineer, I led the engineering team, established coding standards, and set up the engineering culture. I contributed extensively to full-stack development across React.js, React Native, Python, Microservices, REST APIs, and AI/ML integrations, creating a scalable and high-performance platform.",
     category: ["company", "fullstack", "frontend", "backend"],
+    tags: ["Platforms", "Software Engineering"],
     image: "/images/shestel-new.png",
     images: ["/images/shestel-home.png", "/images/shestel-movie.png"],
     technologies: [
@@ -600,6 +637,7 @@ export const projects: Project[] = [
     fullDescription:
       "Dash Language School offers language courses in German, Portuguese, Spanish, Mandarin, French, and Italian, helping learners of all ages and backgrounds explore the educational, cultural, and linguistic aspects of these countries. I built a modern, interactive web application using React.js and Node.js for the content management system. The platform allows users to easily browse courses, make payments, and register seamlessly, while providing a visually engaging experience enhanced with Framer animations.",
     category: ["company", "frontend", "fullstack"],
+    tags: ["Websites & Digital Experiences"],
     image: "/images/dash-cover.png",
     images: ["/images/dash-1.jpg", "/images/dash-2.jpg"],
     technologies: [
@@ -642,6 +680,7 @@ export const projects: Project[] = [
     fullDescription:
       "David Olivia Consulting Ltd specializes in compliance consulting, training, and property management services. The website provides a professional, user-friendly interface to showcase the company’s expertise, services, and thought leadership. I built a CMS-powered frontend using WordPress, enabling the team to update content, manage SEO, and track website performance seamlessly. The platform ensures a smooth user experience for clients and partners while reflecting the firm’s credibility and professionalism.",
     category: ["frontend", "company"],
+    tags: ["Websites & Digital Experiences"],
     image: "/images/david-cover.png",
     images: ["/images/david-olivia-1.jpg", "/images/david-olivia-2.jpg"],
     technologies: [
@@ -682,6 +721,7 @@ export const projects: Project[] = [
     fullDescription:
       "ERIN is my personal brand website built to bring together everything I do in one place. I work as a software engineer, a technical writer, a content creator, and a lifestyle enthusiast. The website reflects all these parts of me with a clean and fast interface that is easy to navigate.",
     category: ["portfolio", "frontend", "fullstack"],
+    tags: ["Websites & Digital Experiences"],
     image: "/images/erin-prototype.webp",
     images: ["/images/erin-container.png", "/images/erin-full.png"],
     technologies: [
@@ -716,6 +756,7 @@ export const projects: Project[] = [
     fullDescription:
       "A personal brand website built for Omotola O. Omotayo, the founder of Elegance Media and COO at WriteTech Hub. She has over 7 years of experience as a community builder, project manager, and a strong advocate for diversity in tech. The website gives a complete view of her achievements, services, and media presence, making it easy for users to reach out and engage with her work.",
     category: ["portfolio", "frontend"],
+    tags: ["Websites & Digital Experiences"],
     image: "/images/omotola-omotayo.png",
     images: ["/images/omotola-three.png", "/images/omotola-two.png"],
     technologies: ["WordPress", "Elementor", "HTML5", "CSS3", "SEO Tools"],
@@ -749,6 +790,7 @@ export const projects: Project[] = [
     fullDescription:
       "A professional personal brand platform for Zainab Daodu — a Senior Technical Writer, former Software Developer, and Founder of WriteTech Hub. The website highlights her services such as technical documentation, public speaking, consultation, and content creation. It also presents her brand achievements, recognitions, and work samples, while giving users a seamless and responsive experience across all devices.",
     category: ["portfolio", "frontend"],
+    tags: ["Websites & Digital Experiences"],
     image: "/images/zaycodes-cover.png",
     images: ["/images/zaycodes-one.png", "/images/zaycodes-two.png"],
     technologies: ["WordPress", "Elementor", "HTML5", "CSS3"],
@@ -773,12 +815,95 @@ export const projects: Project[] = [
       position: "Senior Technical Writer & Founder, WriteTech Hub",
     },
   },
+  {
+    id: "kora",
+    title: "Kora — Internal AI Knowledge Assistant",
+    shortDescription:
+      "An internal AI assistant that lets employees ask questions in plain English and get precise, cited answers drawn only from the organisation's own documents.",
+    fullDescription:
+      "Kora is an internal AI knowledge assistant built at Refactrd for a growing professional services firm. Employees were losing time searching for information that already existed, and new hires took too long to get up to speed. Kora answers questions using retrieval-augmented generation over the organisation's indexed documents rather than a model's general training data, and every answer includes a citation so the employee can verify the source. If Kora does not have enough information to answer confidently, it says so and points the employee to the right person or team instead of guessing.",
+    category: ["software tools", "ai", "backend", "fullstack"],
+    tags: ["AI Engineering"],
+    images: [],
+    technologies: [
+      "Claude Sonnet 4",
+      "OpenAI text-embedding-3-small",
+      "Supabase",
+      "pgvector",
+      "Server-Sent Events",
+    ],
+    year: "2026",
+    client: "Meridian Works (anonymised, per the published case study)",
+    role: "Founder & Lead Engineer, Refactrd — designed and built the full system",
+    challenges:
+      "New hires struggled to get up to speed on policy, managers answered the same questions repeatedly, and the knowledge existed in documents nobody could find in time. The demo in the public case study runs on a representative, anonymised set of documents to protect client confidentiality; the engineering, infrastructure and AI are identical to what is live for the real organisation.",
+    solutions: [
+      "Document ingestion pipeline: uploaded documents are chunked, embedded with OpenAI's text-embedding-3-small (1536-dim), and stored in Supabase using the pgvector extension",
+      "Query pipeline: validate the query, check a semantic cache (0.92 cosine similarity threshold) before any model call, run a pgvector similarity search, then score confidence and route low-confidence queries to an 'uncertain' response instead of a guess",
+      "Grounded generation: retrieved chunks and the question are passed to Claude Sonnet 4 with a system prompt instructing it to answer only from the provided context and cite its sources, streamed to the employee via Server-Sent Events",
+      "An admin suite for document management plus analytics: total queries, a 14-day rolling query chart, a confidence breakdown, and an 'uncertain query' log that surfaces exactly which topics the knowledge base cannot yet answer",
+    ],
+    results:
+      "After indexing the organisation's documents and running for several weeks, the uncertain-query log surfaced real documentation gaps (expense reimbursement timelines, equipment requests, complaint escalation) that did not exist as written policy before and have since been written. Typical build timeline for a system like this is two to four weeks from document ingestion to a live, usable assistant.",
+    builtAt: { name: "Refactrd", url: "https://refactrd.com" },
+    caseStudyUrl:
+      "https://www.refactrd.com/case-studies/refactrd-x-meridian-works-building-kora-an-ai-knowledge-assistant-for-a-growing-organisation",
+  },
+  {
+    id: "quill",
+    title: "Quill — AI-Powered SOW & Proposal Generator",
+    shortDescription:
+      "Turns raw discovery-call notes into a complete, branded scope-of-work document in under 10 minutes instead of the two to three hours a manual proposal typically takes.",
+    fullDescription:
+      "Quill is an AI proposal and SOW generator built at Refactrd for a production studio that generates multiple proposals a week. It takes pasted discovery-call notes, extracts the key project details with Claude, matches the project to the right service packages from a pricing database, and generates all eight standard SOW sections in a branded, exportable PDF. Every section stays editable before export, and the user can customise the PDF's colour palette, font and size before downloading.",
+    category: ["software tools", "ai", "backend", "fullstack"],
+    tags: ["AI Engineering", "AI Automation"],
+    images: [],
+    technologies: ["Claude (extraction + tool use)", "Supabase", "WeasyPrint"],
+    year: "2026",
+    client: "Nexus Labs (anonymised, per the published case study)",
+    role: "Founder & Lead Engineer, Refactrd — designed and built the full system",
+    challenges:
+      "Manual proposal writing took two to three hours per proposal and produced inconsistent output, and slow turnaround cost deals when a proposal arrived days after a discovery call. The public demo runs on a representative set of service packages rather than the client's real commercial pricing and client information, to protect confidentiality; the workflow, AI and PDF output are identical to what is used in production.",
+    solutions: [
+      "Extraction step: Claude turns pasted discovery notes into structured JSON (client, industry, problem statement, requirements, timeline and budget signals) which the user reviews and can correct before generation, since AI extraction is accurate but not perfect",
+      "Generation step: a second Claude call with tool use queries a Supabase pricing-package database to select two or three matching packages, then generates all eight SOW sections (Executive Summary, Scope of Work, Phasing and Timeline, Deliverables, Investment, Exclusions, Assumptions, Payment Terms) in a senior-consultant tone",
+      "Inline section-by-section editing directly on the rendered document, with no separate editor",
+      "Branding step: the user picks from 10 colour presets and 10 fonts before the backend renders the HTML template with the chosen variables and converts it to a PDF via WeasyPrint",
+    ],
+    results:
+      "Early testers who normally spend around two hours per proposal reported first drafts landing at roughly 80% of the way there after about 12 minutes of generation, with one proposal sent to a client with only minor edits. A production version customised for a specific business typically takes three to five weeks to build, depending on pricing-structure complexity and CRM/proposal-tool integrations.",
+    builtAt: { name: "Refactrd", url: "https://refactrd.com" },
+    caseStudyUrl:
+      "https://www.refactrd.com/case-studies/refactrd-x-nexus-labs-building-quill-an-ai-powered-sow-and-proposal-generator",
+  },
+  {
+    id: "atlas",
+    title: "Atlas — Multi-Agent Research & Decision Intelligence (Concept)",
+    shortDescription:
+      "A concept for a research system where specialised agents collect, analyse and synthesise information into structured, human-reviewed decision support.",
+    fullDescription:
+      "Atlas is a solution concept rather than a shipped system: a multi-agent research and decision-intelligence workflow where a research objective is broken into tasks, specialised agents or workflows handle collection, extraction and analysis, and the findings are synthesised into a structured output for human review. It represents the kind of multi-agent architecture that a research objective, structured decision support, and cross-source synthesis problem would call for.",
+    category: ["ai"],
+    tags: ["AI Engineering"],
+    images: [],
+    technologies: [],
+    year: "2026",
+    role: "Concept and architecture exploration",
+    status: "concept",
+  },
 ];
 
 // Helper function to get projects by category
 export const getProjectsByCategory = (category: ProjectCategory): Project[] => {
   if (category === "all") return projects;
   return projects.filter((project) => project.category.includes(category));
+};
+
+// Helper function to get projects by the new /projects taxonomy tag
+export const getProjectsByTag = (tag: ProjectTag | "all"): Project[] => {
+  if (tag === "all") return projects;
+  return projects.filter((project) => project.tags?.includes(tag));
 };
 
 // Helper function to get project by ID

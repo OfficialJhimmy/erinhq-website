@@ -2,38 +2,24 @@
 'use client'
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Instagram, Linkedin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { FaTiktok } from "react-icons/fa";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { useRestrictedSession } from "@/hooks/useRestrictedSession";
-
-// Custom X (Twitter) Icon component
-const XIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="24"
-    height="24"
-    fill="currentColor"
-    className="w-6 h-6"
-  >
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
+import { socialLinks } from "@/data/social";
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const isRestricted = useRestrictedSession();
 
-  const { trackButtonClick } = useAnalytics();
-  const { trackLinkClick } = useAnalytics();
-
+  const { trackButtonClick, trackLinkClick } = useAnalytics();
 
   const navigationLinks = [
-    { name: "About ERIN", href: "/about" },
-    { name: "Portfolio", href: "/portfolio" },
+    { name: "AI Solutions", href: "/ai-solutions" },
+    { name: "AI Engineering", href: "/ai-engineering" },
+    { name: "Projects", href: "/projects" },
     { name: "Writing", href: "/writing" },
-    { name: "Get in Touch", href: "/links" },
+    { name: "About", href: "/about" },
     { name: "Work With Me", href: "/work-with-me" },
   ];
 
@@ -41,13 +27,6 @@ export const Footer: React.FC = () => {
     { name: "Privacy Policy", href: "#" },
     { name: "Terms of Service", href: "#" },
     { name: "Cookies Settings", href: "#" },
-  ];
-
-  const socialLinks = [
-    { name: "TikTok", icon: FaTiktok, href: "https://www.tiktok.com/@erinthebrand?_r=1&_t=ZS-91LVN0OmxrJ" },
-    { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/erinthebrand" },
-    { name: "X (Twitter)", icon: XIcon, href: "https://x.com/erinthebrand" },
-    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/feyijimierinle" },
   ];
 
   return (
@@ -121,15 +100,13 @@ export const Footer: React.FC = () => {
               </div>
             </div>
             <div>
-              <a
-                href="https://erinhq.fillout.com/contact-me"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackButtonClick('Footer CTA - Get in Touch')}
-                className="inline-flex items-center justify-center gap-2 bg-[linear-gradient(90deg,#FFFFFF,#FFC687,#FF8906)] text-[#1B1B1B] font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]"
+              <Link
+                href="/work-with-me"
+                onClick={() => trackButtonClick('Footer CTA - Work With Me')}
+                className="inline-flex items-center justify-center gap-2 bg-brand-gradient text-ink font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]"
               >
-                Get in Touch <ArrowRight size={18} />
-              </a>
+                Work With Me <ArrowRight size={18} />
+              </Link>
             </div>
           </div>
           {/* Social Icons and CTA */}
@@ -155,9 +132,12 @@ export const Footer: React.FC = () => {
               </Link>
             ))}
           </div>
-          <p className="text-white/60 text-sm">
-            © {currentYear} ERINHQ. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center md:items-end gap-1 text-right">
+            <p className="text-white/60 text-sm">Lagos, Nigeria &middot; Working globally</p>
+            <p className="text-white/60 text-sm">
+              &copy; {currentYear} ERINHQ. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

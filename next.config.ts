@@ -6,6 +6,20 @@ const nextConfig: NextConfig = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })({
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: '/portfolio',
+        destination: '/projects',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/:id',
+        destination: '/projects/:id',
+        permanent: true,
+      },
+    ];
+  },
 });
 
 export default nextConfig;

@@ -4,21 +4,39 @@ import { useCallback } from 'react';
 import { event } from '@/lib/gtag';
 
 export function useAnalytics() {
-  // Track button clicks
+  // Track CTA button clicks
   const trackButtonClick = useCallback((buttonName: string) => {
     event({
-      action: 'click',
-      category: 'Button',
+      action: 'cta_clicked',
+      category: 'CTA',
       label: buttonName,
     });
   }, []);
 
-  // Track link clicks
+  // Track outbound link clicks (social profiles, live project sites, external case studies, etc.)
   const trackLinkClick = useCallback((linkName: string, destination: string) => {
     event({
-      action: 'click',
-      category: 'Link',
+      action: 'external_link_clicked',
+      category: 'External Link',
       label: `${linkName} - ${destination}`,
+    });
+  }, []);
+
+  // Track AI Solution page views
+  const trackSolutionViewed = useCallback((solutionName: string) => {
+    event({
+      action: 'solution_viewed',
+      category: 'AI Solutions',
+      label: solutionName,
+    });
+  }, []);
+
+  // Track project case study views
+  const trackProjectViewed = useCallback((projectName: string) => {
+    event({
+      action: 'project_viewed',
+      category: 'Projects',
+      label: projectName,
     });
   }, []);
 
@@ -72,6 +90,8 @@ export function useAnalytics() {
   return {
     trackButtonClick,
     trackLinkClick,
+    trackSolutionViewed,
+    trackProjectViewed,
     trackFormSubmit,
     trackDownload,
     trackVideoPlay,

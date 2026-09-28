@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink, Github, ArrowRight } from "lucide-react";
 import { getRelatedProjects, type Project } from "@/data/portfolioData";
 import { ProjectCardPortfolio } from "@/components/Cards/ProjectCardPortfolio";
+import { ProjectPlaceholder, illustrationVariantForId } from "@/components/ui/ProjectPlaceholder";
 import { Footer } from "@/components/Footer/Footer";
 import { event } from "@/lib/gtag";
 import { useAnalytics } from "@/hooks/useAnalytics";
@@ -22,8 +23,8 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
   useEffect(() => {
     if (project) {
       event({
-        action: "view_project",
-        category: "Portfolio",
+        action: "project_viewed",
+        category: "Projects",
         label: project.title,
       });
 
@@ -45,18 +46,18 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
   // Track live site clicks
   const handleLiveSiteClick = () => {
     event({
-      action: "click_live_site",
-      category: "Portfolio",
-      label: project.title,
+      action: "external_link_clicked",
+      category: "External Link",
+      label: `Live Site - ${project.title}`,
     });
   };
 
   // Track GitHub clicks
   const handleGithubClick = () => {
     event({
-      action: "click_github",
-      category: "Portfolio",
-      label: project.title,
+      action: "external_link_clicked",
+      category: "External Link",
+      label: `GitHub - ${project.title}`,
     });
   };
 
@@ -67,16 +68,21 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
         <div className="max-w-5xl mx-auto">
           {/* Back Button */}
           <Link
-            href="/portfolio"
+            href="/projects"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-8 transition-colors group"
-            onClick={() => trackLinkClick("Back to Portfolio", "/portfolio")}
           >
             <ArrowLeft
               size={20}
               className="group-hover:-translate-x-1 transition-transform"
             />
-            Back to Portfolio
+            Back to Projects
           </Link>
+
+          {project.status === "concept" && (
+            <span className="inline-flex items-center rounded-full border border-copper/60 px-3 py-1 mb-4 font-heading text-xs uppercase tracking-wider text-copper">
+              Concept — not a shipped deployment
+            </span>
+          )}
 
           {/* Title */}
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-normal text-[#FFF] mb-6">
@@ -99,6 +105,22 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
               <span className="text-white/60 text-sm">Role</span>
               <p className="font-medium">{project.role}</p>
             </div>
+            {project.builtAt && (
+              <div>
+                <span className="text-white/60 text-sm">Built at</span>
+                <p className="font-medium">
+                  <a
+                    href={project.builtAt.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackLinkClick(`Built at ${project.builtAt?.name}`, project.builtAt?.url ?? "")}
+                    className="underline hover:text-[#E8B67E] transition-colors"
+                  >
+                    {project.builtAt.name}
+                  </a>
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Links */}
@@ -125,6 +147,17 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                 View on GitHub <Github size={18} />
               </a>
             )}
+            {project.caseStudyUrl && (
+              <a
+                href={project.caseStudyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackLinkClick("Read Full Case Study", project.caseStudyUrl ?? "")}
+                className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-full font-medium hover:bg-white/20 transition-colors"
+              >
+                Read Full Case Study <ExternalLink size={18} />
+              </a>
+            )}
           </div>
         </div>
       </section>
@@ -133,13 +166,17 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
       <section className="px-6 mt-2">
         <div className="max-w-5xl mx-auto">
           <div className="aspect-video relative rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover"
-              priority
-            />
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            ) : (
+              <ProjectPlaceholder variant={illustrationVariantForId(project.id)} />
+            )}
           </div>
         </div>
       </section>
@@ -322,11 +359,8 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                 Related Projects
               </h2>
               <Link
-                href="/portfolio"
+                href="/projects"
                 className="hidden md:inline-flex items-center gap-2 text-[#1B1B1B] font-medium hover:gap-3 transition-all hover:text-[#E8B67E]"
-                onClick={() =>
-                  trackLinkClick("View All Projects", "/portfolio")
-                }
               >
                 View All Projects <ArrowRight size={18} />
               </Link>
@@ -341,14 +375,14 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                   description={relatedProject.shortDescription}
                   image={relatedProject.image}
                   technologies={relatedProject.technologies}
+                  status={relatedProject.status}
                 />
               ))}
             </div>
 
             <Link
-              href="/portfolio"
+              href="/projects"
               className="md:hidden inline-flex items-center gap-2 text-[#1B1B1B] font-medium hover:gap-3 transition-all hover:text-[#E8B67E] mt-8"
-              onClick={() => trackLinkClick("View All Projects", "/portfolio")}
             >
               View All Projects <ArrowRight size={18} />
             </Link>

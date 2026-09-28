@@ -1,29 +1,43 @@
 // app/page.tsx
-
-import { AboutSection } from "@/components/Sections/HomeSections/AboutSection";
+import type { Metadata } from "next";
 import { Contributions } from "@/components/Sections/HomeSections/Contributions";
 import Hero from "@/components/Hero/Hero";
-import { ProjectsSection } from "@/components/Sections/HomeSections/ProjectsSection";
+import { CredibilityStrip } from "@/components/Sections/HomeSections/CredibilityStrip";
+import { AISolutionsPreviewSection } from "@/components/Sections/HomeSections/AISolutionsPreviewSection";
+import { HowItWorksSection } from "@/components/Sections/HomeSections/HowItWorksSection";
+import { OrganisationFitSection } from "@/components/Sections/HomeSections/OrganisationFitSection";
+import { AIEngineeringCapabilitiesSection } from "@/components/Sections/HomeSections/AIEngineeringCapabilitiesSection";
+import { SoftwareEngineeringSection } from "@/components/Sections/HomeSections/SoftwareEngineeringSection";
+import { SelectedProjectsSection } from "@/components/Sections/HomeSections/SelectedProjectsSection";
+import { WhyWorkWithMeSection } from "@/components/Sections/HomeSections/WhyWorkWithMeSection";
 import { WritingSection } from "@/components/Sections/HomeSections/WritingSection";
-import { TestimonialsSection } from "@/components/Sections/HomeSections/TestimonialsSection";
 import { CTASection } from "@/components/Sections/CTASection/CTASection";
 import { Footer } from "@/components/Footer/Footer";
-import { HowToWorkWithMeSection } from "@/components/Sections/HomeSections/HowToWorkWithMeSection";
-import { ConnectSection } from "@/components/Sections/HomeSections/ConnectSection";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Feyijimi Erinle | AI Engineer & Software Engineer",
+  description:
+    "Feyijimi Erinle is an AI Engineer and Software Engineer based in Lagos, Nigeria, building AI agents, intelligent automation, AI products and scalable software for businesses globally.",
+  path: "/",
+});
 
 export default function HomePage() {
   return (
     <>
       <Hero />
+      <CredibilityStrip />
       <Contributions />
-      <AboutSection/>
-      <ProjectsSection/>
-      <WritingSection/>
-      <HowToWorkWithMeSection/>
-      <ConnectSection/>
-      <TestimonialsSection/>
-      <CTASection variant="default"/>
-      <Footer/>
+      <AISolutionsPreviewSection />
+      <HowItWorksSection />
+      <OrganisationFitSection />
+      <AIEngineeringCapabilitiesSection />
+      <SoftwareEngineeringSection />
+      <SelectedProjectsSection />
+      <WhyWorkWithMeSection />
+      <WritingSection />
+      <CTASection variant="home" />
+      <Footer />
     </>
   );
 }

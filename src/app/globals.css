@@ -51,14 +51,6 @@
 }
 
 @font-face {
-  font-family: "Euclid Circular A Light";
-  src: url("/fonts/euclid-circular-a/Euclid-Circular-A-Light.ttf")
-    format("truetype");
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Euclid Circular A SemiBold";
   src: url("/fonts/euclid-circular-a/Euclid-Circular-A-SemiBold.ttf")
     format("truetype");
@@ -112,35 +104,11 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Satoshi";
-  src: url("/fonts/satoshi/Satoshi-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --bg: #1b1b1b;
   --foreground: #171717;
-  --font-space-age: "Satoshi";
-  --font-body-light: "Euclid Circular A Light"
+  --font-heading: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-euclid), ui-sans-serif, system-ui, sans-serif;
 }
 
 html,
@@ -224,11 +192,11 @@ button {
   font: inherit;
 }
 
-/* Normalize the focus outline for accessibility */
-/* *:focus {
-  outline: 1px solid #E8B67E;
+/* Visible keyboard-focus state (not shown for mouse/touch interaction) */
+:focus-visible {
+  outline: 2px solid #e8b67e;
   outline-offset: 2px;
-} */
+}
 
 /* Remove default image size and behavior */
 img {
@@ -255,11 +223,6 @@ hr {
   height: 1px;
   background-color: #ddd;
   margin: 1em 0;
-}
-
-/* Provide some spacing between sections */
-section {
-  margin-bottom: 1.5em;
 }
 
 /* Ensure consistent rendering of block elements */
@@ -294,10 +257,10 @@ html {
 }
 
 .font-heading {
-  font-family: var(--font-space-age);
+  font-family: var(--font-heading);
 }
 .font-body {
-  font-family: var(--font-body-light);
+  font-family: var(--font-body);
 }
 
 /* Smooth scrolling + motion-safe transitions */

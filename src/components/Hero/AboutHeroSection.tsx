@@ -33,74 +33,70 @@
 
 // components/sections/AboutHeroSection.tsx
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { HeroBackgroundImage } from "@/components/ui";
 
 const roles = [
-  "Software Engineer",
   "AI Engineer",
+  "Software Engineer",
   "Technical Writer",
   "Content Creator",
 ];
 
 export const AboutHeroSection: React.FC = () => {
   return (
-    <section className="bg-[#1B1B1B] min-h-screen flex flex-col justify-center py-28 px-6">
-      <div className="max-w-6xl w-full mx-auto">
-        {/* Section label */}
-        <div className="flex items-center gap-3 mb-8">
-          <Image
-            src="/images/Line.png"
-            alt="Decorative line"
-            width={60}
-            height={16}
-            loading="lazy"
-            className="object-contain"
-          />
-          <span className="text-white/60 font-heading text-sm uppercase tracking-wider">
-            About
-          </span>
-        </div>
+    <section className="relative overflow-hidden bg-[#1B1B1B] min-h-screen flex flex-col justify-center py-28 px-6">
+      <HeroBackgroundImage src="/images/about-hero.webp" />
+      <div className="relative z-10 max-w-6xl w-full mx-auto">
+        <span className="text-white/60 font-heading text-sm uppercase tracking-wider mb-6 block">
+          About ERIN
+        </span>
 
-        {/* Wordmark */}
-        <p className="font-heading text-[56px] sm:text-[72px] md:text-[95px] lg:text-[110px] font-normal leading-[60px] sm:leading-[76px] md:leading-[90px] bg-gradient-to-r from-[#FFFFFF] to-[#FF8906] bg-clip-text text-transparent mb-3">
-          ERIN THE BRAND
-        </p>
-        <p className="text-[#E8B67E] text-base md:text-lg font-normal tracking-wide mb-14">
-          Imagine Creative, Imagine Modern
+        <h1 className="font-heading text-[36px] sm:text-[48px] md:text-[64px] lg:text-[72px] font-normal leading-[1.1] bg-gradient-to-r from-[#FFFFFF] to-[#FF8906] bg-clip-text text-transparent mb-6 max-w-4xl">
+          I started by building software. Today, I build intelligent systems.
+        </h1>
+
+        <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-3xl mb-14">
+          I&apos;m Feyijimi Erinle, an AI Engineer and Software Engineer based in Lagos, Nigeria.
+          My work has evolved from frontend development into full-stack engineering, backend
+          systems, cloud infrastructure and AI engineering. Today, I design and build intelligent
+          systems, AI products, automation and scalable software that solve real business
+          problems.
         </p>
 
         {/* Statement + quick facts */}
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start border-t border-white/10 pt-12">
-          <p className="text-white/90 text-lg md:text-xl leading-relaxed">
-            I am Feyijimi Erinle, and most people know me as ERIN. I build
-            software, I write about it, and I teach other people how to do
-            both. My work moves between engineering, AI, and communication,
-            and I care more about whether something actually works for the
-            person using it than how impressive it sounds on paper.
-          </p>
+          <div className="flex flex-wrap gap-2">
+            {roles.map((role) => (
+              <span
+                key={role}
+                className="px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm"
+              >
+                {role}
+              </span>
+            ))}
+          </div>
 
           <div>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {roles.map((role) => (
-                <span
-                  key={role}
-                  className="px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm"
-                >
-                  {role}
-                </span>
-              ))}
-            </div>
             <p className="text-white/60 text-sm mb-6">
-              Based in Lagos, Nigeria. Building since 2019.
+              Lagos, Nigeria &middot; Working globally &middot; Building since 2019.
             </p>
-            <Link
-              href="/work-with-me"
-              className="inline-flex items-center gap-2 text-[#E8B67E] font-medium hover:gap-3 transition-all"
-            >
-              Work with me
-              <span aria-hidden="true">↗</span>
-            </Link>
+            <div className="flex flex-wrap gap-6">
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-2 text-[#E8B67E] font-medium hover:gap-3 transition-all"
+              >
+                Explore My Work
+                <span aria-hidden="true">↗</span>
+              </Link>
+              <Link
+                href="/work-with-me"
+                className="inline-flex items-center gap-2 text-[#E8B67E] font-medium hover:gap-3 transition-all"
+              >
+                Work With Me
+                <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

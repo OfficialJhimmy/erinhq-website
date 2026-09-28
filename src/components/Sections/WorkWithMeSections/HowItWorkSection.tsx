@@ -13,39 +13,45 @@ interface ProcessStep {
 const processSteps: ProcessStep[] = [
   {
     number: '01',
-    description: 'You reach out with what you need. Maybe you want a developer, a writer, or both. Start by filling out a brief form. Share your goals, project type, and what you hope to achieve.',
+    description: 'Understand — Start with the business problem, users, workflow, constraints and desired outcome.',
     bgColor: '#FFFBF1',
     alignment: 'left',
   },
   {
     number: '02',
-    description: 'We talk. I ask you questions, lots of them. This helps me understand your goals, your audience, and where you are right now.',
+    description: 'Define — Identify what should be built and decide whether AI, automation, conventional software or a combination makes sense.',
     bgColor: '#EFE5FC',
     alignment: 'right',
   },
   {
     number: '03',
-    description: 'If I know I can deliver real value, we start with a small fixed project or consultation. This way, you see how I think and work before we dive deeper.',
+    description: 'Design — Define the product experience, system architecture, integrations, data flows and technical approach.',
     bgColor: '#FFEAE7',
     alignment: 'left',
   },
   {
     number: '04',
-    description: 'I do the research. I learn about your audience, your challenges, and your product. If it is a build, I map out the requirements. If it is writing, I explore the best way to structure and deliver the content.',
+    description: 'Build — Engineer the application, AI components, backend services, integrations and infrastructure.',
     bgColor: '#E2FFFE',
     alignment: 'right',
   },
   {
     number: '05',
-    description: 'I create a clear plan and start execution: building, writing, or both. Along the way, I keep you updated, so you are never left in the dark.',
+    description: 'Validate — Test the system, evaluate AI behaviour where relevant and address reliability, security and edge cases.',
     bgColor: '#FFDAF8',
     alignment: 'left',
   },
   {
     number: '06',
-    description: 'By the end, you have something you can actually use, a product that works, or documentation that speaks to the right people.',
+    description: 'Launch — Deploy the system and make sure the required operational foundations are in place.',
     bgColor: '#FCF6E1',
     alignment: 'right',
+  },
+  {
+    number: '07',
+    description: 'Improve — Continue refining the system based on actual usage, feedback and changing business requirements.',
+    bgColor: '#FFFBF1',
+    alignment: 'left',
   },
 ];
 
@@ -65,11 +71,11 @@ export const HowIWorkSection: React.FC = () => {
               className="object-contain"
             />
             <span className="text-[#A3A3A3] font-heading text-sm uppercase tracking-wider">
-              Simple Process
+              From Problem to Production
             </span>
           </div>
           <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-medium text-[#1B1B1B] leading-tight">
-            Here's How I Work With You
+            Every project is different, but the process should remain clear.
           </h2>
         </div>
 

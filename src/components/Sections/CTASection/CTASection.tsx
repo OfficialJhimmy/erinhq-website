@@ -1,11 +1,12 @@
 // components/sections/CTASection.tsx
 'use client'
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface CTASectionProps {
-  variant?: 'default' | 'mediaKit';
+  variant?: 'default' | 'mediaKit' | 'projects' | 'home' | 'about';
 }
 
 export const CTASection: React.FC<CTASectionProps> = ({ variant = 'default' }) => {
@@ -14,21 +15,110 @@ export const CTASection: React.FC<CTASectionProps> = ({ variant = 'default' }) =
   return (
     <div className="relative bg-gradient-to-br from-[#1B1B1B] via-[#3E2A15] to-[#FF8906] py-32">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        {variant === 'default' ? (
+        {variant === 'default' && (
           <>
             <h2 className="text-4xl md:text-5xl font-medium text-white mb-8">
               Have a project in mind?
             </h2>
-            <a
-              href="https://erinhq.fillout.com/contact-me"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackButtonClick('Get in Touch')}
-              className="inline-flex items-center justify-center gap-2 bg-[linear-gradient(90deg,#FFFFFF,#FFC687,#FF8906)] text-[#1B1B1B] font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]"            >
-              Get in Touch <ArrowRight size={20} />
-            </a>
+            <Link
+              href="/work-with-me"
+              onClick={() => trackButtonClick('Work With Me')}
+              className="inline-flex items-center justify-center gap-2 bg-brand-gradient text-ink font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]"
+            >
+              Work With Me <ArrowRight size={20} />
+            </Link>
           </>
-        ) : (
+        )}
+        {variant === 'projects' && (
+          <>
+            <h2 className="text-4xl md:text-5xl font-medium text-white mb-6">
+              Have something you want to build?
+            </h2>
+            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              These projects show different ways I approach AI, software and product engineering.
+              If you have a business problem, product idea or workflow you want to improve, we can
+              work out what the right system should look like.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/work-with-me"
+                onClick={() => trackButtonClick('Start a Conversation')}
+                className="inline-flex items-center justify-center gap-2 bg-brand-gradient text-ink font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]"
+              >
+                Start a Conversation <ArrowRight size={20} />
+              </Link>
+              <Link
+                href="/ai-solutions"
+                onClick={() => trackButtonClick('Explore AI Solutions')}
+                className="inline-flex items-center justify-center gap-2 border border-white/30 text-white font-body font-medium rounded-full transition-colors hover:border-white/60 p-4 text-[15px]"
+              >
+                Explore AI Solutions
+              </Link>
+            </div>
+          </>
+        )}
+        {variant === 'home' && (
+          <>
+            <span className="text-white/70 text-sm uppercase tracking-wider font-heading block mb-4">
+              Build Something Useful
+            </span>
+            <h2 className="text-4xl md:text-5xl font-medium text-white mb-6">
+              Have a business problem that AI could solve?
+            </h2>
+            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              Tell me what you are trying to improve, automate or build. If there is a practical
+              AI or software solution, we can map out what it could look like.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/work-with-me"
+                onClick={() => trackButtonClick('Start a Conversation')}
+                className="inline-flex items-center justify-center gap-2 bg-brand-gradient text-ink font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]"
+              >
+                Start a Conversation <ArrowRight size={20} />
+              </Link>
+              <Link
+                href="/ai-solutions"
+                onClick={() => trackButtonClick('Explore AI Solutions')}
+                className="inline-flex items-center justify-center gap-2 border border-white/30 text-white font-body font-medium rounded-full transition-colors hover:border-white/60 p-4 text-[15px]"
+              >
+                Explore AI Solutions
+              </Link>
+            </div>
+          </>
+        )}
+        {variant === 'about' && (
+          <>
+            <span className="text-white/70 text-sm uppercase tracking-wider font-heading block mb-4">
+              Let&apos;s Build
+            </span>
+            <h2 className="text-4xl md:text-5xl font-medium text-white mb-6">
+              Have a problem worth building around?
+            </h2>
+            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              Whether you are exploring an AI system, building an AI product or need a software
+              product engineered from the ground up, let&apos;s talk about what you are trying to
+              achieve.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/work-with-me"
+                onClick={() => trackButtonClick('Work With Me')}
+                className="inline-flex items-center justify-center gap-2 bg-brand-gradient text-ink font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]"
+              >
+                Work With Me <ArrowRight size={20} />
+              </Link>
+              <Link
+                href="/ai-solutions"
+                onClick={() => trackButtonClick('Explore AI Solutions')}
+                className="inline-flex items-center justify-center gap-2 border border-white/30 text-white font-body font-medium rounded-full transition-colors hover:border-white/60 p-4 text-[15px]"
+              >
+                Explore AI Solutions
+              </Link>
+            </div>
+          </>
+        )}
+        {variant === 'mediaKit' && (
           <>
             <div className="mb-8">
               <div className="flex items-center justify-center gap-3 mb-4">

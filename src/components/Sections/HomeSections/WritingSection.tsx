@@ -52,12 +52,12 @@ export const WritingSection: React.FC = () => {
               className="object-contain"
             />
             <span className="text-[#A3A3A3] font-heading text-sm uppercase tracking-wider">
-              Works
+              From the Engineering Desk
             </span>
           </div>
           <h2 className="text-3xl md:text-[38px] lg:text-[40px] font-normal text-[#1B1B1B] text-center">
-            Read my tutorials, documentation, and
-            <br className="hidden md:block" /> insights.
+            Writing about AI, software and
+            <br className="hidden md:block" /> building technology.
           </h2>
         </div>
 
@@ -70,7 +70,7 @@ export const WritingSection: React.FC = () => {
         <div className="text-center">
           <Link href="/writing" passHref>
             <button className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1B1B1B] to-[#FF8906] text-[#FBF5E4] font-body font-medium rounded-full transition-transform hover:scale-105 p-4 text-[15px]">
-              View all my Writing <GoArrowUpRight size={18} />
+              Read the Writing <GoArrowUpRight size={18} />
             </button>
           </Link>
         </div>

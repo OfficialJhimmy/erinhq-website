@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ERIN Website Claude Code Pack
 
-## Getting Started
+## Recommended project placement
 
-First, run the development server:
+Copy this structure into the root of the ERIN website repository:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```text
+your-erin-website/
+├── CLAUDE.md
+├── docs/
+│   └── website-content/
+│       ├── ERIN_Home_Page_Content_Specification.md
+│       ├── ERIN_AI_Solutions_Content_Specification.md
+│       ├── ERIN_AI_Engineering_Page_Content_Specification.md
+│       ├── ERIN_Projects_Page_and_Case_Study_Specification.md
+│       ├── ERIN_About_Page_Content_Specification.md
+│       ├── ERIN_Work_With_Me_Page_Content_Specification.md
+│       └── [matching .docx files]
+└── ...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Claude Code automatically uses `CLAUDE.md` as project-level instructions.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The Markdown files are the preferred implementation references because they are easy for coding agents to search and read. The DOCX files are retained for human reference.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Recommended implementation order
 
-## Learn More
+1. Inspect existing repository
+2. Global design system and shared layout
+3. SEO/metadata foundation
+4. Analytics and performance instrumentation
+5. Home
+6. AI Solutions + individual solution pages
+7. AI Engineering
+8. Projects migration and new taxonomy
+9. Software Engineering
+10. About
+11. Work With Me
+12. Final SEO/performance/accessibility QA
 
-To learn more about Next.js, take a look at the following resources:
+## Important
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Do not let Claude delete existing portfolio/project pages.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The site is being evolved, not wiped and rebuilt from scratch.
 
-## Deploy on Vercel
+Use the master prompt in:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`ERIN_WEBSITE_MASTER_IMPLEMENTATION_PROMPT.md`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 // e.g. a shared portfolio link. Restriction applies only to the page
 // someone lands on directly. Clicking any link, anywhere, restores the
 // full navbar from that point on for the rest of the tab session.
-export const RESTRICTED_ENTRY_ROUTES = ["/portfolio", "/writing", "/links"];
+export const RESTRICTED_ENTRY_ROUTES = ["/projects", "/writing", "/links"];
 
 const HAS_NAVIGATED_KEY = "erinHasNavigatedInternally";
 
