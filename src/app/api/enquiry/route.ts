@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { enquirySchema } from "./schema";
 import { getResendClient } from "@/lib/resend";
 import { ENQUIRY_TYPE_LABELS, type EnquiryType } from "@/data/enquiryTypes";
+import { buildAdminNotificationEmail, buildConfirmationEmail } from "@/lib/emailTemplates";
 
 // Best-effort only: in-memory state does not reliably persist across
 // serverless invocations/instances. This slows down sustained abuse from a
@@ -18,6 +19,8 @@ function isRateLimited(ip: string): boolean {
   submissionLog.set(ip, recent);
   return recent.length > RATE_LIMIT_MAX;
 }
+
+const FROM_ADDRESS = "ERIN <creatives@erinhq.com>";
 
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
@@ -55,39 +58,46 @@ export async function POST(request: NextRequest) {
   const toEmail = process.env.ENQUIRY_TO_EMAIL || "creatives@erinhq.com";
   const projectTypeLabel = ENQUIRY_TYPE_LABELS[data.projectType as EnquiryType];
 
-  const lines = [
-    `Project type: ${projectTypeLabel}`,
-    `Name: ${data.name}`,
-    `Email: ${data.email}`,
-    `Company: ${data.company}`,
-    data.companyWebsite ? `Company website: ${data.companyWebsite}` : null,
-    "",
-    "Problem or idea:",
-    data.problem,
-    "",
-    "What they'd like the system to do:",
-    data.desiredOutcome,
-    data.currentTools ? `\nCurrent tools/systems: ${data.currentTools}` : null,
-    data.timeline ? `Expected timeline: ${data.timeline}` : null,
-    data.budget ? `Approximate budget: ${data.budget}` : null,
-    data.anythingElse ? `\nAnything else:\n${data.anythingElse}` : null,
-  ].filter((line): line is string => line !== null);
-
+  // The admin notification is the critical path — if this fails, the
+  // enquiry effectively never reached anyone, so the request must fail.
   try {
     const resend = getResendClient();
+    const admin = buildAdminNotificationEmail({ ...data, projectTypeLabel });
     await resend.emails.send({
-      from: "ERIN Website <enquiries@erinhq.com>",
+      from: FROM_ADDRESS,
       to: toEmail,
       replyTo: data.email,
       subject: `New enquiry: ${projectTypeLabel} — ${data.company}`,
-      text: lines.join("\n"),
+      html: admin.html,
+      text: admin.text,
     });
   } catch (error) {
-    console.error("Failed to send enquiry email:", error instanceof Error ? error.message : error);
+    console.error("Failed to send enquiry notification:", error instanceof Error ? error.message : error);
     return NextResponse.json(
       { error: "Something went wrong sending your enquiry. Please try again or email creatives@erinhq.com directly." },
       { status: 502 }
     );
+  }
+
+  // The confirmation email to the enquirer is best-effort — the enquiry
+  // itself already succeeded above, so a failure here shouldn't fail the
+  // whole request.
+  try {
+    const resend = getResendClient();
+    const confirmation = buildConfirmationEmail({
+      name: data.name,
+      projectTypeLabel,
+      company: data.company,
+    });
+    await resend.emails.send({
+      from: FROM_ADDRESS,
+      to: data.email,
+      subject: "Thanks for reaching out",
+      html: confirmation.html,
+      text: confirmation.text,
+    });
+  } catch (error) {
+    console.error("Failed to send confirmation email:", error instanceof Error ? error.message : error);
   }
 
   return NextResponse.json({ ok: true });
